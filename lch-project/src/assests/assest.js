@@ -1,6 +1,6 @@
 import doc1 from "./doc1.png";
 import doc2 from "./doc2.png";
-import dec3 from "./doc3.png";
+import doc3 from "./doc3.png";
 import doc4 from "./doc4.png";
 import doc5 from "./doc5.png";
 import doc6 from "./doc6.png";
@@ -20,25 +20,29 @@ import Pediatricians from "./Pediatricians.svg";
 import header_img from "./doc-header-img.png";
 import Gynecologist from "./Gynecologist.svg";
 import Dermatologist from "./Dermatologist.svg";
+import logo from "./logo.svg";
+import profile_pic from "./profile_image.png";
+import dropdown_icon from "./dropdow_icon.svg"
 
 export const assets = {
-  appointment_img,
-  header_img,
-  group_profiles,
   logo,
-  chats_icon,
-  verified_icon,
-  info_icon,
+  // appointment_img,
+  // header_img,
+  // group_profiles,
+
+  // chats_icon,
+  // verified_icon,
+  // info_icon,
   profile_pic,
-  arrow_icon,
-  contact_image,
-  about_image,
-  menu_icon,
-  cross_icon,
+  // arrow_icon,
+  // contact_image,
+  // about_image,
+  // menu_icon,
+  // cross_icon,
   dropdown_icon,
-  upload_icon,
-  stripe_logo,
-  razorpay_logo,
+  // upload_icon,
+  // stripe_logo,
+  // razorpay_logo,
 };
 
 export const specialityData = [

@@ -1,3 +1,17 @@
+navigate("my-profile")
+ 
+"./logo.png
+ 
+assests
+ 
+
+        <Route path="/login" element={<Login />} />
+ 
+
+import My_Appointment from "../src/Pages/MyAppointments"
+ 
+tart Project Bismillah
+ 
 resolve: {
   extensions: ['.js', '.jsx', '.json'],
 },
