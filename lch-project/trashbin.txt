@@ -1,3 +1,42 @@
+bg-red-500
+ 
+items-start justify-start
+ 
+md:m-0
+ 
+bg-red-300
+ 
+items-start justify-center
+ 
+g-orange-400
+ 
+bg-red-500
+ 
+bg-red-400
+ 
+bg-red-300
+ 
+bg-red-300
+ 
+ h-auto
+ 
+className="w-full md:absolute bottom-0 rounded-lg h-auto"
+ 
+justify-center
+ 
+Doctors
+ 
+doctors,
+ 
+Doctors
+ 
+relative
+ 
+
+import header_img from './doc-header-img.png'
+ 
+flex bg-blue-500"
+ 
 navigate("my-profile")
  
 "./logo.png

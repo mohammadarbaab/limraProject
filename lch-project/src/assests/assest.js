@@ -23,18 +23,19 @@ import Dermatologist from "./Dermatologist.svg";
 import logo from "./logo.svg";
 import profile_pic from "./profile_image.png";
 import dropdown_icon from "./dropdow_icon.svg"
-
+import group_profiles from "./group_profiles.png"
+import arrow_icon from "./arrow_icon.svg"
 export const assets = {
   logo,
   // appointment_img,
-  // header_img,
-  // group_profiles,
+  header_img,
+  group_profiles,
 
   // chats_icon,
   // verified_icon,
   // info_icon,
   profile_pic,
-  // arrow_icon,
+  arrow_icon,
   // contact_image,
   // about_image,
   // menu_icon,
