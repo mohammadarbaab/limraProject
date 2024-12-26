@@ -1,3 +1,17 @@
+
+import {doctor
+ 
+            onClick={()=>scrollTo(0,0)}
+ 
+
+import Speciality from "../Components/SpecialityMenu";
+ 
+bg-red-500
+ 
+bg-orange-400
+ 
+bg-gray-200
+ 
 bg-red-500
  
 items-start justify-start
