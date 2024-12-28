@@ -27,7 +27,7 @@ import group_profiles from "./group_profiles.png"
 import arrow_icon from "./arrow_icon.svg"
 export const assets = {
   logo,
-  // appointment_img,
+  appointment_img,
   header_img,
   group_profiles,
 

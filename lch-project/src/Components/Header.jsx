@@ -24,7 +24,7 @@ function Header() {
           </p>
         </div>
         <a
-          href="#speaciality"
+          href="#speciality"
           className="flex items-center gap-2 bg-white px-8 py-3 rounded-full text-gray-600 text-sm m-auto  hover:scale-105 transition-all duration-300"
         >
           Book appointment{" "}
