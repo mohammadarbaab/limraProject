@@ -1,3 +1,18 @@
+(item, index) => )
+ 
+slice(0, 10).
+ 
+{
+          filterDoc.map()
+        }
+ 
+
+  console.log(speciality)
+ 
+speciality
+ 
+uthenticatorAssertionResponse.
+ 
 Book Appointment 
  
 r

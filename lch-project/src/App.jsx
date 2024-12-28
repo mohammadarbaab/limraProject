@@ -8,11 +8,12 @@ import MyProfile from "../src/Pages/MyProfile";
 import MyAppointments from "../src/Pages/MyAppointments";
 import Appointment from "./Pages/Appointment";
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
     <div className="mx-4 sm:mx-[10%]">
-    <Navbar></Navbar>
+      <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/doctors" element={<Doctors />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path="/my-appointments" element={<MyAppointments />} />
         <Route path="/appointment/:docId" element={<Appointment />} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
