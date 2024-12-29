@@ -25,6 +25,8 @@ import profile_pic from "./profile_image.png";
 import dropdown_icon from "./dropdow_icon.svg"
 import group_profiles from "./group_profiles.png"
 import arrow_icon from "./arrow_icon.svg"
+import verify_icon from "../assests/verify_doc.png"
+import info_icon from "../assests/info_icon.png"
 export const assets = {
   logo,
   appointment_img,
@@ -32,8 +34,8 @@ export const assets = {
   group_profiles,
 
   // chats_icon,
-  // verified_icon,
-  // info_icon,
+  verify_icon,
+  info_icon,
   profile_pic,
   arrow_icon,
   // contact_image,
