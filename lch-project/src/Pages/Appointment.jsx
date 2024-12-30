@@ -4,10 +4,27 @@ import { AppContext } from "../context/AppContext";
 import { assets } from "../assests/assest";
 function Appointment() {
   const { docId } = useParams();
-  const { doctors,currencySymbol } = useContext(AppContext);
+  const { doctors, currencySymbol } = useContext(AppContext);
   const [docInfo, setDocInfo] = useState(null);
 
+  const [docSlots, setDocSlots] = useState([]);
+  const [slotIndex, setSlotIndex] = useState(0);
+  const [slotTime, setSlotTime] = useState(" ");
 
+  const getAvailableSlots = async () => {
+    setDocSlots([]);
+    // getting current date
+    let today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+      // getting date with index
+      let currentDate = new Date(today);
+      currentDate.setDate(today.getDate()+i)
+
+      // setting and time of the date with index 
+      
+    }
+  };
   const fetchDocInfo = async () => {
     const doctorId = Number(docId);
     const docInfo = doctors.find((doc) => doc.id === doctorId);
@@ -18,6 +35,10 @@ function Appointment() {
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
+
+  useEffect(() => {
+    getAvailableSlots();
+  }, [docInfo]);
   return (
     docInfo && (
       <div>
@@ -53,7 +74,11 @@ function Appointment() {
                 {docInfo.about}
               </p>
               <p className="text-gray-500 font-medium mt-4">
-                Appointment Fee: <span>{currencySymbol}{docInfo.fees}</span>
+                Appointment Fee:{" "}
+                <span>
+                  {currencySymbol}
+                  {docInfo.fees}
+                </span>
               </p>
             </div>
           </div>
