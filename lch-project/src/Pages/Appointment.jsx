@@ -6,7 +6,6 @@ function Appointment() {
   const { docId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
   const [docInfo, setDocInfo] = useState(null);
-
   const [docSlots, setDocSlots] = useState([]);
   const [slotIndex, setSlotIndex] = useState(0);
   const [slotTime, setSlotTime] = useState(" ");
@@ -19,26 +18,65 @@ function Appointment() {
     for (let i = 0; i < 7; i++) {
       // getting date with index
       let currentDate = new Date(today);
-      currentDate.setDate(today.getDate()+i)
+      currentDate.setDate(today.getDate() + i);
 
-      // setting and time of the date with index 
-      
+      // setting and time of the date with index
+      let endTime = new Date();
+      endTime.setDate(today.getDate() + i);
+      endTime.setHours(21, 0, 0, 0);
+
+      // setting hours
+      if (today.getDate() === currentDate.getDate()) {
+        currentDate.setHours(
+          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+        );
+        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+      } else {
+        currentDate.setHours(10);
+        currentDate.setMinutes(0);
+      }
+
+      let timeSlots = [];
+      while (currentDate < endTime) {
+        let formattedTime = currentDate.toLocaleDateString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        // add slotes to array
+        timeSlots.push({
+          datetime: new Date(currentDate),
+          time: formattedTime,
+        });
+
+        // increament current time by 3o minutes
+        currentDate.setMinutes(currentDate.getMinutes() + 30);
+      }
+      // add slots to docSlots array
+      setDocSlots(prev => [...prev, timeSlots]);
     }
   };
+
+ 
+
+  useEffect(() => {
+    getAvailableSlots();
+  }, [docInfo]);
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+
+  // fetch doctors info
   const fetchDocInfo = async () => {
     const doctorId = Number(docId);
     const docInfo = doctors.find((doc) => doc.id === doctorId);
     setDocInfo(docInfo);
     console.log(docInfo);
   };
-  // Doctors
-  useEffect(() => {
+   // Doctors
+   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
-
-  useEffect(() => {
-    getAvailableSlots();
-  }, [docInfo]);
   return (
     docInfo && (
       <div>
