@@ -28,6 +28,7 @@ import arrow_icon from "./arrow_icon.svg"
 import verify_icon from "../assests/verify_doc.png"
 import info_icon from "../assests/info_icon.png"
 import about_image from "../assests/about_image.png"
+import contact_image from "../assests/contact_image.png"
 export const assets = {
   logo,
   appointment_img,
@@ -39,7 +40,7 @@ export const assets = {
   info_icon,
   profile_pic,
   arrow_icon,
-  // contact_image,
+  contact_image,
   about_image,
   // menu_icon,
   // cross_icon,
