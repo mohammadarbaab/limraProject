@@ -1,3 +1,24 @@
+<input
+          type="text"
+          className="border"
+          value={userData.name}
+          onChange={(e) =>
+            setUserData((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
+ 
+<p>{userData.phone}</p>
+ 
+...prev,name:e.target.value
+ 
+<div>
+ 
+123, Main Street, New York
+ 
+profile_image.png
+ 
+Sign up
+ 
 Careers at PRESCRIPTO
  
 Email: greatstackdev@gmail.com
