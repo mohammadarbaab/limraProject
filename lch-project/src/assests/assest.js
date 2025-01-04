@@ -28,7 +28,9 @@ import arrow_icon from "./arrow_icon.svg"
 import verify_icon from "../assests/verify_doc.png"
 import info_icon from "../assests/info_icon.png"
 import about_image from "../assests/about_image.png"
-import contact_image from "../assests/contact_image.png"
+import contact_image from "../assests/contact_image.png";
+import menu_bar from "../assests/menu-bar.png"
+import cross_icon from "../assests/close.png"
 export const assets = {
   logo,
   appointment_img,
@@ -42,8 +44,8 @@ export const assets = {
   arrow_icon,
   contact_image,
   about_image,
-  // menu_icon,
-  // cross_icon,
+  menu_bar,
+  cross_icon,
   dropdown_icon,
   // upload_icon,
   // stripe_logo,
