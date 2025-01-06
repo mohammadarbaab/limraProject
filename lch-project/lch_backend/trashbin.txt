@@ -1,3 +1,48 @@
+
+module.exports upload;
+ 
+
+    required: true,
+ 
+
+    required: true,
+ 
+ { minimize: false }
+ 
+ date: {
+      type: Number,
+      required: true,
+    },
+    slots_booked: {
+      type: Object,
+      default: {},
+    }
+ 
+speciality: {
+      type: String,
+      required: true,
+    },
+    degree: {
+      type: String,
+      required: true,
+    },
+    experience: {
+      type: String,
+      required: true,
+    },
+    about: {
+      type: String,
+      required: true,
+    },
+    available: {
+      type: Boolean,
+      default: true,
+    },
+    fees: {
+      type: Number,
+      default: 0,
+    },
+ 
 dfprdhzyn
  
 
