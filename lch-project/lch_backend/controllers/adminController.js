@@ -1,3 +1,8 @@
+import validator from "validator";
+import bycrypt from "bcrypt";
+import { v2 as cloudinary } from "cloudinary";
+import doctorModel from "../models/doctorModel.js";
+// API for Adding doctor
 const addDoctor = async (req, res) => {
   try {
     const {
@@ -10,36 +15,76 @@ const addDoctor = async (req, res) => {
       degree,
       experience,
       fees,
+      date,
       address,
     } = req.body;
-    
-    // Handle image file
     const imageFile = req.file;
 
-    // Check if file exists
-    if (!imageFile) {
-      return res.status(400).json({ error: "Image file is missing" });
+    // checking for all data to add doctor
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !speciality ||
+      !about ||
+      !phone ||
+      !degree ||
+      !experience ||
+      !fees ||
+      !address ||
+      !date
+    ) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Please fill all the fields" });
     }
 
-    console.log({
-      name,
-      email,
-      password,
-      speciality,
-      about,
-      phone,
-      degree,
-      experience,
-      fees,
-      address,
+    // validating email format
+    if (!validator.isEmail(email)) {
+      return res
+        .status(400)
+        .json({ success: false, message: "please enter a valid email" });
+    }
+
+    // validating strong password
+    if (password.length < 8) {
+      return res
+        .status(400)
+        .json({ success: false, message: "password enter a strong password" });
+    }
+
+    // hashing doctor password
+    const salt = await bycrypt.genSalt(10);
+    const hashedPassword = await bycrypt.hash(password, salt);
+
+    // upload image to cloudinary
+    const uploadImage = await cloudinary.uploader.upload(imageFile.path, {
+      resource_type: "image",
     });
-    console.log("Uploaded Image:", imageFile);  // Log the image file details
+    const imageUrl = uploadImage.secure_url;
 
-    // Proceed with saving doctor data (e.g., to a DB)
+    const doctoraData = {
+      name: name,
+      email: email,
+      image: imageUrl,
+      password: hashedPassword,
+      speciality: speciality,
+      about: about,
+      phone: phone,
+      degree: degree,
+      experience: experience,
+      fees: fees,
+      address: JSON.parse(address),
+      date: Date.now(),
+    };
 
+    const newDoctor = new doctorModel(doctoraData);
+    await newDoctor.save();
+
+    res.json({ success: true, message: "Doctor added" });
   } catch (error) {
-    console.error("Error adding doctor:", error);
-    res.status(500).json({ error: "Server error" });
+    console.log(error);
+    res.json({ success: false, message: error.message });
   }
 };
 

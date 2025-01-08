@@ -1,3 +1,136 @@
+<db_password>
+ 
+mongodb+srv://kazmiwrite:RP73QCJbW9IXG3a4@cluster0.n9i9siu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+ 
+XHc4z84xIwb7ydHa
+ 
+TubZzmakXWBzYuR7j1Vfphio0hc
+ 
+634363991855465
+ 
+0QNEEQitXwB4X3hDP2ikpmqy54
+ 
+fprdhzyn
+ 
+481462436913363
+ 
+Y0QNEEQitXwB4X3hDP2ikpmqy54
+ 
+634363991855465
+ 
+vEfsWADImT7L_Xs8lVklz2hE9lQ
+ 
+636686918394823
+ 
+dfprdhzyn
+ 
+
+  console.log(process.env.CLOUDINARY_NAME); // Check if loaded
+ 
+dfprdhzyn
+ 
+vEfsWADImT7L_Xs8lVklz2hE9lQ
+ 
+636686918394823
+ 
+636686918394823
+ 
+CLOUDINARY_SECRET_KEY
+ 
+CLOUDINARY_API_KEY
+ 
+CLOUDINARY_NAME
+ 
+
+import doctorModel from "../models/doctorModel";
+ 
+
+import { json } from "express";
+ 
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+ 
+//   {
+    //     name,
+    //     email,
+    //     password,
+    //     speciality,
+    //     about,
+    //     phone,
+    //     degree,
+    //     experience,
+    //     fees,
+    //     address,
+    //   },
+    //   imageFile
+    // );
+ 
+// console.log(
+ 
+should be at
+ 
+!validator.isStrongPassword(password)
+ 
+Invalid email
+ 
+upload.single("image")
+ 
+
+    console.log("this is image",req.file);
+ 
+// API for Adding doctor
+const addDoctor = async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+      password,
+      speciality,
+      about,
+      phone,
+      degree,
+      experience,
+      fees,
+      address,
+    } = req.body;
+    const imageFile = req.file;
+
+    console.log(
+      {
+        name,
+        email,
+        password,
+        speciality,
+        about,
+        phone,
+        degree,
+        experience,
+        fees,
+        address,
+      },
+      imageFile
+    );
+  } catch (error) {}
+};
+
+export { addDoctor };
+
+ 
+import multer from "multer";
+
+const storage = multer.diskStorage({
+  filename: function (req, file, callback) {
+    callback(null, file.originalname);
+  },
+});
+
+const upload = multer({
+  storage,
+});
+
+export default upload;
+
+ 
 // API for Adding doctor
 const addDoctor = async (req, res) => {
   try {
