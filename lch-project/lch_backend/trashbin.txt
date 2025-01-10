@@ -1,3 +1,19 @@
+
+// authAdmin.js file
+require('dotenv').config();
+ 
+SECRET_KEY
+ 
+
+    const adminToken = req.header("Authorization").replace("Bearer ", "");
+ 
+
+module.exports=authAdmin;
+ 
+JsonWebTokenError 
+ 
+ upload.single("image"),
+ 
 <db_password>
  
 mongodb+srv://kazmiwrite:RP73QCJbW9IXG3a4@cluster0.n9i9siu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
