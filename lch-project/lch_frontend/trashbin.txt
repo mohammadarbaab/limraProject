@@ -1,0 +1,667 @@
+
+className="px-4 py-2 rounded inline-block "
+className="px-4 py-2 rounded inline-block "
+className="px-4 py-2 rounded inline-block "
+ 
+
+            {
+              
+            }
+ 
+<input
+          type="text"
+          className="border"
+          value={userData.name}
+          onChange={(e) =>
+            setUserData((prev) => ({ ...prev, name: e.target.value }))
+          }
+        />
+ 
+<p>{userData.phone}</p>
+ 
+...prev,name:e.target.value
+ 
+<div>
+ 
+123, Main Street, New York
+ 
+profile_image.png
+ 
+Sign up
+ 
+Careers at PRESCRIPTO
+ 
+Email: greatstackdev@gmail.com
+ 
+Tel: (415) 555‑0132
+ 
+assest,
+ 
+Navigate
+ 
+<div>
+    
+  </div>
+ 
+
+  console.log("hello world")
+ 
+/ 
+ 
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+ 
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { assets } from "../assests/assest";
+function Appointment() {
+  const { docId } = useParams();
+  const { doctors, currencySymbol } = useContext(AppContext);
+  const [docInfo, setDocInfo] = useState(null);
+  const [docSlots, setDocSlots] = useState([]);
+  const [slotIndex, setSlotIndex] = useState(0);
+  const [slotTime, setSlotTime] = useState(" ");
+
+  const getAvailableSlots = async () => {
+    setDocSlots([]);
+    // getting current date
+    let today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+      // getting date with index
+      let currentDate = new Date(today);
+      currentDate.setDate(today.getDate() + i);
+
+      // setting and time of the date with index
+      let endTime = new Date();
+      endTime.setDate(today.getDate() + i);
+      endTime.setHours(21, 0, 0, 0);
+
+      // setting hours
+      if (today.getDate() === currentDate.getDate()) {
+        currentDate.setHours(
+          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+        );
+        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+      } else {
+        currentDate.setHours(10);
+        currentDate.setMinutes(0);
+      }
+
+      let timeSlots = [];
+      while (currentDate < endTime) {
+        let formattedTime = currentDate.toLocaleDateString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        // add slotes to array
+        timeSlots.push({
+          datetime: new Date(currentDate),
+          time: formattedTime,
+        });
+
+        // increament current time by 3o minutes
+        currentDate.setMinutes(currentDate.getMinutes() + 30);
+      }
+      // add slots to docSlots array
+      setDocSlots((prev) => [...prev, timeSlots]);
+    }
+  };
+
+  useEffect(() => {
+    getAvailableSlots();
+  }, [docInfo]);
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+
+  // fetch doctors info
+  const fetchDocInfo = async () => {
+    const doctorId = Number(docId);
+    const docInfo = doctors.find((doc) => doc.id === doctorId);
+    setDocInfo(docInfo);
+    console.log(docInfo);
+  };
+  // Doctors
+  useEffect(() => {
+    fetchDocInfo();
+  }, [doctors, docId]);
+  return (
+    docInfo && (
+      <div>
+        {/* Doctors Details */}
+        <div className="flex flex-row gap-4">
+          <div>
+            <img
+              src={docInfo.image}
+              alt=""
+              className="bg-primary w-full sm:max-w-72 rounded-lg"
+            />
+          </div>
+          <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
+            {/* doc info  */}
+            <p className="flex items-center gap-2 text-2xl font-medium text-gray-900  ">
+              {docInfo.name}{" "}
+              <img src={assets.verify_icon} alt="verify_doc" className="w-5" />
+            </p>
+            <div className="flex items-center gap-2 text-sm mt-1 text-gray-600 ">
+              <p>
+                {docInfo.degree} - {docInfo.speciality}
+              </p>
+              <button className="py-0.5 px-2 border text-xs rounded-full ">
+                {docInfo.experience}
+              </button>
+            </div>
+            {/* doc about */}
+            <div>
+              <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
+                About <img src={assets.info_icon} className="w-4 h-4" alt="" />
+              </p>
+              <p className="text-sm text-gray-500 max-w-[700px] mt-1 ">
+                {docInfo.about}
+              </p>
+              <p className="text-gray-500 font-medium mt-4">
+                Appointment Fee:{" "}
+                <span>
+                  {currencySymbol}
+                  {docInfo.fees}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  );
+}
+
+export default Appointment;
+
+ 
+
+  
+ 
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+ 
+
+  useEffect(() => {
+    console.log("docSlots has changed:", docSlots);
+  }, [docSlots]);
+ 
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+ 
+import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import { assets } from "../assests/assest";
+function Appointment() {
+  const { docId } = useParams();
+  const { doctors, currencySymbol } = useContext(AppContext);
+  const [docInfo, setDocInfo] = useState(null);
+  const [docSlots, setDocSlots] = useState([]);
+  const [slotIndex, setSlotIndex] = useState(0);
+  const [slotTime, setSlotTime] = useState(" ");
+
+  // const getAvailableSlots = async () => {
+  //   setDocSlots([]);
+  //   // getting current date
+  //   let today = new Date();
+
+  //   for (let i = 0; i < 7; i++) {
+  //     // getting date with index
+  //     let currentDate = new Date(today);
+  //     currentDate.setDate(today.getDate() + i);
+
+  //     // setting and time of the date with index
+  //     let endTime = new Date();
+  //     endTime.setDate(today.getDate() + 1);
+  //     endTime.setHours(12, 0, 0, 0);
+
+  //     // setting hours
+  //     if (today.getDate() === currentDate.getDate()) {
+  //       currentDate.setHours(
+  //         currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
+  //       );
+  //       currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+  //     } else {
+  //       currentDate.setHours(10);
+  //       currentDate.setMinutes(0);
+  //     }
+
+  //     let timeSlots = [];
+  //     while (currentDate < endTime) {
+  //       let formattedTime = currentDate.toLocaleDateString([], {
+  //         hour: "2-digit",
+  //         minute: "2-digit",
+  //       });
+  //       // add slotes to array
+  //       timeSlots.push({
+  //         datetime: new Date(currentDate),
+  //         time: formattedTime,
+  //       });
+
+  //       // increament current time by 3o minutes
+  //       currentDate.setMinutes(currentDate.getMinutes() + 30);
+  //     }
+  //     // add slots to docSlots array
+  //     setDocSlots((prevSlots) => [...prevSlots, timeSlots]);
+  //   }
+  // };
+
+  const getAvailableSlots = async () => {
+    // Initialize docSlots as an empty array
+    setDocSlots([]);
+    // Getting current date
+    const today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+      // Getting date with index
+      const currentDate = new Date(today);
+      currentDate.setDate(today.getDate() + i);
+
+      // Setting endTime as 12:00 PM of the current date
+      let endTime = new Date(currentDate);
+      endTime.setHours(12, 0, 0, 0);
+
+      // Setting start time based on the current day
+      if (today.getDate() === currentDate.getDate()) {
+        currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10);
+        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
+      } else {
+        currentDate.setHours(10);
+        currentDate.setMinutes(0);
+      }
+
+      let timeSlots = [];
+
+      // Generate time slots for the current day
+      while (currentDate < endTime) {
+        let formattedTime = currentDate.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        // Add slots to array
+        timeSlots.push({
+          datetime: new Date(currentDate),
+          time: formattedTime,
+        });
+
+        // Increment current time by 30 minutes
+        currentDate.setMinutes(currentDate.getMinutes() + 30);
+      }
+
+      // Add the generated time slots to the docSlots state
+      setDocSlots((prevSlots) => [...prevSlots, ...timeSlots]);
+    }
+  };
+
+  
+  // const fetchDocInfo = async () => {
+  //   const doctorId = Number(docId);
+  //   const docInfo = doctors.find((doc) => doc.id === doctorId);
+  //   setDocInfo(docInfo);
+  //   console.log(docInfo);
+  // };
+
+  // Doctors
+
+  const fetchDocInfo = async () => {
+    if (!docId) {
+      console.error("docId is missing.");
+      return;
+    }
+
+    const doctorId = Number(docId);
+    const docInfo = doctors.find((doc) => doc.id === doctorId);
+    if (docInfo) {
+      setDocInfo(docInfo);
+      console.log(docInfo);
+    } else {
+      console.log("Doctor not found.");
+    }
+  };
+  useEffect(() => {
+    fetchDocInfo();
+  }, [doctors, docId]);
+
+  useEffect(() => {
+    getAvailableSlots();
+  }, [docInfo]);
+
+  useEffect(() => {
+    console.log(docSlots);
+  }, [docSlots]);
+
+  return (
+    docInfo && (
+      <div>
+        {/* Doctors Details */}
+        <div className="flex flex-row gap-4">
+          <div>
+            <img
+              src={docInfo.image}
+              alt=""
+              className="bg-primary w-full sm:max-w-72 rounded-lg"
+            />
+          </div>
+          <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
+            {/* doc info  */}
+            <p className="flex items-center gap-2 text-2xl font-medium text-gray-900  ">
+              {docInfo.name}{" "}
+              <img src={assets.verify_icon} alt="verify_doc" className="w-5" />
+            </p>
+            <div className="flex items-center gap-2 text-sm mt-1 text-gray-600 ">
+              <p>
+                {docInfo.degree} - {docInfo.speciality}
+              </p>
+              <button className="py-0.5 px-2 border text-xs rounded-full ">
+                {docInfo.experience}
+              </button>
+            </div>
+            {/* doc about */}
+            <div>
+              <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
+                About <img src={assets.info_icon} className="w-4 h-4" alt="" />
+              </p>
+              <p className="text-sm text-gray-500 max-w-[700px] mt-1 ">
+                {docInfo.about}
+              </p>
+              <p className="text-gray-500 font-medium mt-4">
+                Appointment Fee:{" "}
+                <span>
+                  {currencySymbol}
+                  {docInfo.fees}
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  );
+}
+
+export default Appointment;
+
+ 
+ flex-row gap-2 items-center
+ 
+className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
+ 
+Gynecologist
+ 
+Dermatologist
+ 
+Dermatologist
+ 
+(item, index) => )
+ 
+slice(0, 10).
+ 
+{
+          filterDoc.map()
+        }
+ 
+
+  console.log(speciality)
+ 
+speciality
+ 
+uthenticatorAssertionResponse.
+ 
+Book Appointment 
+ 
+r
+ 
+
+    <div className="flex bg-primary rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-20 md
+ 
+Book Appointment
+ 
+#speaciality
+ 
+appointment
+ 
+gridTemplateColumns: {
+        // Change the name from 'auto' to something that makes sense
+        'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
+      },
+ 
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js,jsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#5f6FFF",
+      },
+      gridTemplateColumns: {
+        // Change the name from 'auto' to something that makes sense
+        'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
+      },
+    },
+  },
+  plugins: [],
+};
+
+ 
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js,jsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#5f6FFF",
+      },
+      gridTemplateColumns: {
+        auto: 'repeat(auto-fill, minmax(200px, 1fr))'
+      },
+    },
+  },
+  plugins: [],
+};
+
+ 
+bg-blue-50
+ 
+overflow-hidden
+ 
+
+        'auto-fit': 'repeat(auto-fit, minmax(0, 1fr))',
+ 
+
+import {doctor
+ 
+            onClick={()=>scrollTo(0,0)}
+ 
+
+import Speciality from "../Components/SpecialityMenu";
+ 
+bg-red-500
+ 
+bg-orange-400
+ 
+bg-gray-200
+ 
+bg-red-500
+ 
+items-start justify-start
+ 
+md:m-0
+ 
+bg-red-300
+ 
+items-start justify-center
+ 
+g-orange-400
+ 
+bg-red-500
+ 
+bg-red-400
+ 
+bg-red-300
+ 
+bg-red-300
+ 
+ h-auto
+ 
+className="w-full md:absolute bottom-0 rounded-lg h-auto"
+ 
+justify-center
+ 
+Doctors
+ 
+doctors,
+ 
+Doctors
+ 
+relative
+ 
+
+import header_img from './doc-header-img.png'
+ 
+flex bg-blue-500"
+ 
+navigate("my-profile")
+ 
+"./logo.png
+ 
+assests
+ 
+
+        <Route path="/login" element={<Login />} />
+ 
+
+import My_Appointment from "../src/Pages/MyAppointments"
+ 
+tart Project Bismillah
+ 
+resolve: {
+  extensions: ['.js', '.jsx', '.json'],
+},
+
+ 
+<Home>
+ 
+
+    ष।
+ 
+
+    <div className="flex flex-row justify-center items-center bg-blue-700"></div>
+ 
+
+  </React.StrictMode>
+ 
+
+  <React.StrictMode>
+ 
+export const doctors = [
+  {
+    id: 1,
+    name: "Dr. Richard Jmes",
+    speciality: "General physician",
+    image: doc1,
+    degree: "MBBS",
+    experience: "4 Years",
+    about:
+      "Dr .davis has a strong commitment to delivering comprehensive medical care",
+    fees: 50,
+    address: {
+      line1: "37th Cross, Richmond",
+      line2: "Bangalore, Karnataka",
+    },
+  },
+  // Add more doctors here
+];
+ 
+
+  {
+    speciality: "Cardiologist",
+    image: Cardiologist,
+  }
+ 
+
+import doc15 from "./doc15.png"
+ 
+
+      <h1 className="text-white font-[700] text-[32px]">Bismillah</h1>
+ 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ 
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+ 
+React App
+ 
+import './App.css';
+ 
+  <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+ 
+  <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+ 
+import logo from './logo.svg';
+ 
+
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+ 
