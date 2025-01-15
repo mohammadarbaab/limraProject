@@ -54,11 +54,23 @@ function AddDoctor() {
       );
       if (data.success) {
         toast.success("Doctor Added Successfully");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setDocImg(false);
+        setFees("");
+        setAbout("");
+        setDegree("");
+        setAddress_1("");
+        setAddress_2("");
+        setPhone("");
+        setDate("");
       } else {
         toast.error("Please use Different email");
       }
     } catch (error) {
       console.error(error);
+      toast.error(error.message);
     }
   };
 

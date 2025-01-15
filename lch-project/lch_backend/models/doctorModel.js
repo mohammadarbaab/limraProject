@@ -51,6 +51,10 @@ const doctorSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    phone: {
+      type: String,
+      default: "000000000",
+    },
     slots_booked: {
       type: Object,
       default: {},
