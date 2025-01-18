@@ -16,7 +16,7 @@ const App = () => {
   return aToken ? (
     <div className="bg-[#F8F9FD]">
       <ToastContainer />
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex items-start">
         <Sidebar />
         <Routes>
