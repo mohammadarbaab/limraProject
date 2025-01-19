@@ -5,6 +5,7 @@ import { assets } from "../assests/assest";
 import RelatedDoctors from "../Components/RelatedDoctors";
 function Appointment() {
   const { docId } = useParams();
+  console.log("this is docId",docId)
   const { doctors, currencySymbol } = useContext(AppContext);
   const [docInfo, setDocInfo] = useState(null);
   const [docSlots, setDocSlots] = useState([]);
@@ -57,27 +58,35 @@ function Appointment() {
       setDocSlots((prev) => [...prev, timeSlots]);
     }
   };
-
   useEffect(() => {
     getAvailableSlots();
   }, [docInfo]);
 
+  // // fetch doctors info
+  // const fetchDocInfo = async () => {
+  //   const doctorId = Number(docId);
+  //   const docInfo = doctors.find((doc) => doc._id === doctorId);
+  //   setDocInfo(docInfo);
+  //   console.log(docInfo);
+  // };
+  // // Doctors
+  // useEffect(() => {
+  //   fetchDocInfo();
+  // }, [doctors, docId]);
+  
   useEffect(() => {
-    // `docSlots` ko update karne ke baad console.log
-    console.log("Updated docSlots:", docSlots);
-  }, [docSlots]);
+    const fetchDocInfo = () => {
+      console.log("Fetching doctor info for docId:", docId);  // Debugging line to ensure docId is correct
+      const doctor = doctors.find((doc) => doc._id === docId);  // Find the doctor by _id
+      console.log("Doctor found:", doctor);  // Check if doctor is found
+      setDocInfo(doctor);  // Set the doctor info to state
+    };
 
-  // fetch doctors info
-  const fetchDocInfo = async () => {
-    const doctorId = Number(docId);
-    const docInfo = doctors.find((doc) => doc.id === doctorId);
-    setDocInfo(docInfo);
-    console.log(docInfo);
-  };
-  // Doctors
-  useEffect(() => {
-    fetchDocInfo();
-  }, [doctors, docId]);
+    if (docId && doctors.length > 0) {
+      fetchDocInfo();  // Fetch doctor info only if docId is available and doctors array is not empty
+    }
+  }, [doctors, docId]);  // Fetch the doctor info when doctors or docId changes
+
   return (
     docInfo && (
       <div>

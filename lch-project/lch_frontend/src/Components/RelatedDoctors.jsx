@@ -11,7 +11,7 @@ function RelatedDoctors({ docId, speciality }) {
   useEffect(() => {
     if (doctors.length > 0 && speciality) {
       const doctorsData = doctors.filter(
-        (doc) => doc.speciality === speciality && doc.id !== docId
+        (doc) => doc.speciality === speciality && doc._id !== docId
       );
       setRelDocs(doctorsData);
     }
@@ -25,7 +25,7 @@ function RelatedDoctors({ docId, speciality }) {
       <div className="w-full grid grid-cols-auto gap-4 gap-y-6 px-3 sm:px-0">
         {relDoc.slice(0, 5).map((item, index) => (
           <div
-            onClick={() => navigate(`/appointment/${item.id}`)}
+            onClick={() => navigate(`/appointment/${item._id}`)}
             key={index}
             className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
           >

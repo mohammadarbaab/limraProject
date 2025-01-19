@@ -257,7 +257,7 @@ export const doctors = [
     name: "Dr. Lucas Harris",
     speciality: "Urologist",
     image: doc13,
-    degree: "MBBS, MS Urology",
+    degree: "  Urology",
     experience: "7 Years",
     about:
       "Dr. Lucas specializes in treating urinary tract and male reproductive system disorders.",
