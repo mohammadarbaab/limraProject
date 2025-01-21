@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
+  const [token, setToken] = useState("");
   const currencySymbol = "$";
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "default-url"; // Agar BACKEND_URL nahi hai to 'default-url' use karo
   console.log("this is backend url", backendUrl);
@@ -15,10 +16,6 @@ const AppContextProvider = (props) => {
 
   const [doctors, setDoctors] = useState([]);
   console.log("doctors", doctors);
-  const value = {
-    doctors,
-    currencySymbol,
-  };
 
   const getDoctorsData = async () => {
     try {
@@ -34,6 +31,13 @@ const AppContextProvider = (props) => {
       console.log("error", error);
       toast.error("error catch", error.message);
     }
+  };
+  const value = {
+    doctors,
+    currencySymbol,
+    token,
+    setToken,
+    backendUrl
   };
   useEffect(() => {
     getDoctorsData();
