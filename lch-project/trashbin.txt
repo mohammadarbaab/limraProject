@@ -1,127 +1,61 @@
+imageUpload
+ 
+uploadImageToCloudinary
+ 
+else{
 
-className="px-4 py-2 rounded inline-block "
-className="px-4 py-2 rounded inline-block "
-className="px-4 py-2 rounded inline-block "
- 
-
-            {
-              
-            }
- 
-<input
-          type="text"
-          className="border"
-          value={userData.name}
-          onChange={(e) =>
-            setUserData((prev) => ({ ...prev, name: e.target.value }))
-          }
-        />
- 
-<p>{userData.phone}</p>
- 
-...prev,name:e.target.value
- 
-<div>
- 
-123, Main Street, New York
- 
-profile_image.png
- 
-Sign up
- 
-Careers at PRESCRIPTO
- 
-Email: greatstackdev@gmail.com
- 
-Tel: (415) 555‑0132
- 
-assest,
- 
-Navigate
- 
-<div>
-    
-  </div>
- 
-
-  console.log("hello world")
- 
-/ 
- 
-  useEffect(() => {
-    console.log(docSlots);
-  }, [docSlots]);
- 
-import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
-import { assets } from "../assests/assest";
-function Appointment() {
-  const { docId } = useParams();
-  const { doctors, currencySymbol } = useContext(AppContext);
-  const [docInfo, setDocInfo] = useState(null);
-  const [docSlots, setDocSlots] = useState([]);
-  const [slotIndex, setSlotIndex] = useState(0);
-  const [slotTime, setSlotTime] = useState(" ");
-
-  const getAvailableSlots = async () => {
-    setDocSlots([]);
-    // getting current date
-    let today = new Date();
-
-    for (let i = 0; i < 7; i++) {
-      // getting date with index
-      let currentDate = new Date(today);
-      currentDate.setDate(today.getDate() + i);
-
-      // setting and time of the date with index
-      let endTime = new Date();
-      endTime.setDate(today.getDate() + i);
-      endTime.setHours(21, 0, 0, 0);
-
-      // setting hours
-      if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(
-          currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
-        );
-        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
-      } else {
-        currentDate.setHours(10);
-        currentDate.setMinutes(0);
-      }
-
-      let timeSlots = [];
-      while (currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleDateString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        // add slotes to array
-        timeSlots.push({
-          datetime: new Date(currentDate),
-          time: formattedTime,
-        });
-
-        // increament current time by 3o minutes
-        currentDate.setMinutes(currentDate.getMinutes() + 30);
-      }
-      // add slots to docSlots array
-      setDocSlots((prev) => [...prev, timeSlots]);
     }
+ 
+if(token_decoded !== process.env.User_EMAIL + process.env.User_PASSWORD){
+        return res.status(401).json({success:false,msg:"Unauthorized"});
+    }
+ 
+atoken
+ 
+admin
+ 
+
+      toast
+ 
+data.messsage
+ 
+() => setToken(false)
+ 
+useCallback
+ 
+
+          alert('Sign up success')
+ 
+
+      return res.json({ success: false, message: "Invalid Password" });
+ 
+module.exports=userRouter;
+ 
+
+import { isJWT } from "validator";
+ 
+await User.create({
+ 
+isStrongPassword(password))
+ 
+ const fetchDocInfo = async () => {
+    const doctorId = Number(docId);
+    const docInfo = doctors.find((doc) => doc._id === doctorId);
+    setDocInfo(docInfo);
+    console.log(docInfo);
   };
+ 
 
   useEffect(() => {
-    getAvailableSlots();
-  }, [docInfo]);
-
-  useEffect(() => {
-    console.log(docSlots);
+    // `docSlots` ko update karne ke baad console.log
+    console.log("Updated docSlots:", docSlots);
   }, [docSlots]);
+ 
 
   // fetch doctors info
   const fetchDocInfo = async () => {
     const doctorId = Number(docId);
-    const docInfo = doctors.find((doc) => doc.id === doctorId);
+    const docInfo = doctors.find((doc) => doc._id === doctorId);
     setDocInfo(docInfo);
     console.log(docInfo);
   };
@@ -129,490 +63,499 @@ function Appointment() {
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
-  return (
-    docInfo && (
-      <div>
-        {/* Doctors Details */}
-        <div className="flex flex-row gap-4">
-          <div>
-            <img
-              src={docInfo.image}
-              alt=""
-              className="bg-primary w-full sm:max-w-72 rounded-lg"
-            />
-          </div>
-          <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
-            {/* doc info  */}
-            <p className="flex items-center gap-2 text-2xl font-medium text-gray-900  ">
-              {docInfo.name}{" "}
-              <img src={assets.verify_icon} alt="verify_doc" className="w-5" />
-            </p>
-            <div className="flex items-center gap-2 text-sm mt-1 text-gray-600 ">
-              <p>
-                {docInfo.degree} - {docInfo.speciality}
-              </p>
-              <button className="py-0.5 px-2 border text-xs rounded-full ">
-                {docInfo.experience}
-              </button>
-            </div>
-            {/* doc about */}
-            <div>
-              <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
-                About <img src={assets.info_icon} className="w-4 h-4" alt="" />
-              </p>
-              <p className="text-sm text-gray-500 max-w-[700px] mt-1 ">
-                {docInfo.about}
-              </p>
-              <p className="text-gray-500 font-medium mt-4">
-                Appointment Fee:{" "}
-                <span>
-                  {currencySymbol}
-                  {docInfo.fees}
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  );
-}
-
-export default Appointment;
-
  
 
-  
- 
 
-  useEffect(() => {
-    console.log(docSlots);
-  }, [docSlots]);
- 
-
-  useEffect(() => {
-    console.log("docSlots has changed:", docSlots);
-  }, [docSlots]);
- 
-
-  useEffect(() => {
-    console.log(docSlots);
-  }, [docSlots]);
- 
-import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { AppContext } from "../context/AppContext";
-import { assets } from "../assests/assest";
-function Appointment() {
-  const { docId } = useParams();
-  const { doctors, currencySymbol } = useContext(AppContext);
-  const [docInfo, setDocInfo] = useState(null);
-  const [docSlots, setDocSlots] = useState([]);
-  const [slotIndex, setSlotIndex] = useState(0);
-  const [slotTime, setSlotTime] = useState(" ");
-
-  // const getAvailableSlots = async () => {
-  //   setDocSlots([]);
-  //   // getting current date
-  //   let today = new Date();
-
-  //   for (let i = 0; i < 7; i++) {
-  //     // getting date with index
-  //     let currentDate = new Date(today);
-  //     currentDate.setDate(today.getDate() + i);
-
-  //     // setting and time of the date with index
-  //     let endTime = new Date();
-  //     endTime.setDate(today.getDate() + 1);
-  //     endTime.setHours(12, 0, 0, 0);
-
-  //     // setting hours
-  //     if (today.getDate() === currentDate.getDate()) {
-  //       currentDate.setHours(
-  //         currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10
-  //       );
-  //       currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
-  //     } else {
-  //       currentDate.setHours(10);
-  //       currentDate.setMinutes(0);
-  //     }
-
-  //     let timeSlots = [];
-  //     while (currentDate < endTime) {
-  //       let formattedTime = currentDate.toLocaleDateString([], {
-  //         hour: "2-digit",
-  //         minute: "2-digit",
-  //       });
-  //       // add slotes to array
-  //       timeSlots.push({
-  //         datetime: new Date(currentDate),
-  //         time: formattedTime,
-  //       });
-
-  //       // increament current time by 3o minutes
-  //       currentDate.setMinutes(currentDate.getMinutes() + 30);
-  //     }
-  //     // add slots to docSlots array
-  //     setDocSlots((prevSlots) => [...prevSlots, timeSlots]);
-  //   }
-  // };
-
-  const getAvailableSlots = async () => {
-    // Initialize docSlots as an empty array
-    setDocSlots([]);
-    // Getting current date
-    const today = new Date();
-
-    for (let i = 0; i < 7; i++) {
-      // Getting date with index
-      const currentDate = new Date(today);
-      currentDate.setDate(today.getDate() + i);
-
-      // Setting endTime as 12:00 PM of the current date
-      let endTime = new Date(currentDate);
-      endTime.setHours(12, 0, 0, 0);
-
-      // Setting start time based on the current day
-      if (today.getDate() === currentDate.getDate()) {
-        currentDate.setHours(currentDate.getHours() > 10 ? currentDate.getHours() + 1 : 10);
-        currentDate.setMinutes(currentDate.getMinutes() > 30 ? 30 : 0);
-      } else {
-        currentDate.setHours(10);
-        currentDate.setMinutes(0);
-      }
-
-      let timeSlots = [];
-
-      // Generate time slots for the current day
-      while (currentDate < endTime) {
-        let formattedTime = currentDate.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-
-        // Add slots to array
-        timeSlots.push({
-          datetime: new Date(currentDate),
-          time: formattedTime,
-        });
-
-        // Increment current time by 30 minutes
-        currentDate.setMinutes(currentDate.getMinutes() + 30);
-      }
-
-      // Add the generated time slots to the docSlots state
-      setDocSlots((prevSlots) => [...prevSlots, ...timeSlots]);
-    }
-  };
-
-  
-  // const fetchDocInfo = async () => {
-  //   const doctorId = Number(docId);
-  //   const docInfo = doctors.find((doc) => doc.id === doctorId);
-  //   setDocInfo(docInfo);
-  //   console.log(docInfo);
-  // };
-
-  // Doctors
-
+  // fetch doctors info
   const fetchDocInfo = async () => {
-    if (!docId) {
-      console.error("docId is missing.");
-      return;
-    }
-
     const doctorId = Number(docId);
-    const docInfo = doctors.find((doc) => doc.id === doctorId);
-    if (docInfo) {
-      setDocInfo(docInfo);
-      console.log(docInfo);
-    } else {
-      console.log("Doctor not found.");
-    }
+    const docInfo = doctors.find((doc) => doc._id === doctorId);
+    setDocInfo(docInfo);
+    console.log(docInfo);
   };
+  // Doctors
   useEffect(() => {
     fetchDocInfo();
   }, [doctors, docId]);
+ 
+ useEffect(()=>{
+    console.log("this is appointment doctors console",doctors)
+  },[doctors])
+ 
 
+  console.log("this is docid",docId)
+ 
+
+    console.log("doctors appoint",doctors)
+ 
+BACKEND_URL
+ 
+BACKEND_URL=http://localhost:4000
+ 
+
+require('dotenv').config();
+ 
+REACT_APP_
+ 
+
+
+
+// import { createContext } from "react";
+// import { doctors } from "../assests/assest";
+
+// export const AppContext = createContext();
+
+// const AppContextProvider = (props) => {
+//   const currencySymbol = "$";
+//   const value = {
+//     doctors,
+//     currencySymbol
+//   };
+
+//   return (
+//     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
+//   );
+// };
+
+// export default AppContextProvider;
+ 
+.select(["-password", "-email"]);
+ 
+BACKEND_URL
+ 
+const { data } = await axios.get(backendUrl + "/api/doctor/list");
+ 
+
+      console.log("data comes",data)
+ 
+REACT_APP_
+ 
+REACT_APP_
+ 
+axios.get(backendUrl + "/api/doctor/list");
+ 
+
+  const backendUrl = process.env.BACKEND_URL || "default-url"; // Agar BACKEND_URL nahi hai to 'default-url' use karo
+ 
+
+  const backendUrl = process.env.BACKEND_URL || "default-url"; // Agar BACKEND_URL nahi hai to 
+ 
+BACKEND_URL= http://localhost:4000
+ 
+backendUrl + "/api/doctor/list"
+ 
+{toast} from 'rea'
+ 
+toastify
+ 
+const backendUrl = import.meta.env.BACKEND_URL
+ 
+VITE_
+ 
+VITE_
+ 
+import.meta.env.VITE_BACKEND_URL;
+ 
+TE_BACKEND_URL
+ 
+| 'default_value';
+ 
+
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+ 
+
+  console.log(backendUrl);
+ 
+backendURL
+ 
+
+  const backendURL = import.meta.env.VITE_BACKEND_URL
+ 
+
+import VITE_BACKEND_URL from 'e'
+ 
+
+import { doctors } from "../assests/assest";
+ 
+`${backendURL}/doctors`
+ 
+response
+ 
+
+                  <p className="bg-gray-700 w-5 text-black"> {item.available}</p>
+ 
+const changeAvailability = async (docId) => {
+  try {
+    const { data } = await axios.post(
+      backendUrl + "/api/admin/change-availability",
+      { docId },
+      { headers: { aToken } }
+    );
+
+    if (data.success) {
+      // Update doctors in context after success
+      setDoctors(prevDoctors =>
+        prevDoctors.map(doctor =>
+          doctor._id === docId ? { ...doctor, available: !doctor.available } : doctor
+        )
+      );
+    } else {
+      toast.error("Error");
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+ 
+// Inside your component
   useEffect(() => {
-    getAvailableSlots();
-  }, [docInfo]);
-
-  useEffect(() => {
-    console.log(docSlots);
-  }, [docSlots]);
-
-  return (
-    docInfo && (
-      <div>
-        {/* Doctors Details */}
-        <div className="flex flex-row gap-4">
-          <div>
-            <img
-              src={docInfo.image}
-              alt=""
-              className="bg-primary w-full sm:max-w-72 rounded-lg"
-            />
-          </div>
-          <div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
-            {/* doc info  */}
-            <p className="flex items-center gap-2 text-2xl font-medium text-gray-900  ">
-              {docInfo.name}{" "}
-              <img src={assets.verify_icon} alt="verify_doc" className="w-5" />
-            </p>
-            <div className="flex items-center gap-2 text-sm mt-1 text-gray-600 ">
-              <p>
-                {docInfo.degree} - {docInfo.speciality}
-              </p>
-              <button className="py-0.5 px-2 border text-xs rounded-full ">
-                {docInfo.experience}
-              </button>
-            </div>
-            {/* doc about */}
-            <div>
-              <p className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
-                About <img src={assets.info_icon} className="w-4 h-4" alt="" />
-              </p>
-              <p className="text-sm text-gray-500 max-w-[700px] mt-1 ">
-                {docInfo.about}
-              </p>
-              <p className="text-gray-500 font-medium mt-4">
-                Appointment Fee:{" "}
-                <span>
-                  {currencySymbol}
-                  {docInfo.fees}
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  );
-}
-
-export default Appointment;
+    console.log(doctors); // Jab bhi doctors state update hoga, yeh console mein log karega
+  }, [doctors]); // Dependency array, isme 'doctors' ko daalne se jab bhi doctors update hoga, tab yeh effect run karega.
 
  
- flex-row gap-2 items-center
+const changeAvailability = async (docId) => {
+    try {
+      const { data } = await axios.post(
+        backendUrl + "/api/admin/change-availability",
+        { docId },
+        { headers: { aToken } }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        getAllDoctors();
+      } else {
+        toast.error("error");
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
  
-className="flex items-center gap-1 text-sm font-medium text-gray-900 mt-3">
+
+                <p className="text-black bgg">{item.id}</p>
  
-Gynecologist
+checked={item.available}
  
-Dermatologist
+"succesfully"
  
-Dermatologist
+available
  
-(item, index) => )
+available
  
-slice(0, 10).
+
+const changeAvailablity = async (req, res) => {
+  try {
+    const { docId } = req.body;
+    const docData = await doctorModel.findById(docId);
+
+    // Check if doctor data exists
+    if (!docData) {
+      return res.status(400).json({ success: false, message: "Doctor not found" });
+    }
+
+    await doctorModel.findByIdAndUpdate(docId, {
+      available: !docData.available,
+    });
+
+    res.json({ success: true, message: "Availability changed successfully" });
+  } catch (error) {
+    console.error("Error in changeAvailablity:", error);
+    res.status(500).json({ success: false, message: error.message || "Internal server error" });
+  }
+};
+ 
+available
+ 
+import doctorModel from "../models/doctorModel.js";
+
+const changeAvailablity = async (req, res) => {
+  try {
+    const { docId } = req.body;
+    const docData = await doctorModel.findById(docId);
+    await doctorModel.findByIdAndUpdate(docId, {
+      available: !docData.available,
+    });
+    res.json({ message: "Availability changed successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { changeAvailablity };
+
+ 
+const changeAvailablity = async (req, res) => {
+  try {
+    const { docId } = req.body;
+    const docData = await doctorModel.findById(docId);
+    await doctorModel.findByIdAndUpdate(docId, {
+      available: !docData.available,
+    });
+    res.json({ message: "Availability changed successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+ 
+ <input onChange={()=>changeAvailability(item.id)} className="mt-2 flex items-center gap-1 text-sm " type="checkbox" checked={item.available}/>
+ 
+
+  import { useEffect } from 'react';
+ 
+
+  console.log(setDoctors)
+ 
+
+        console.log(data.doctors);
+ 
+
+        console.log(data);
+ 
+data.message
+ 
+data.message
+ 
+const changeAvailablity = async (req, res) => {
+  try {
+    const { docId } = req.body;
+    const docData = await doctorModel.find(docId);
+    await doctorModel.findByIdAndUpdate(docId, {
+      available: !docData.available,
+    });
+    res.json({ message: "Availability changed successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { changeAvailablity };
+ 
+
+      console.log(error);
+ 
+getDocument(docId);
+ 
+
+        res.status(500).send({message: "Internal Server Error"});
  
 {
-          filterDoc.map()
-        }
+        doctors.map((item,index) => {
+          <div key={index}>
+            <img src={item.name} alt="images"/>
+          </div>
+        })
+      }
  
 
-  console.log(speciality)
+      DoctorList
  
-speciality
- 
-uthenticatorAssertionResponse.
- 
-Book Appointment 
- 
-r
+.select("-password")
  
 
-    <div className="flex bg-primary rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-20 md
- 
-Book Appointment
- 
-#speaciality
- 
-appointment
- 
-gridTemplateColumns: {
-        // Change the name from 'auto' to something that makes sense
-        'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
-      },
- 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
-  theme: {
-    extend: {
-      colors: {
-        primary: "#5f6FFF",
-      },
-      gridTemplateColumns: {
-        // Change the name from 'auto' to something that makes sense
-        'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
-      },
-    },
-  },
-  plugins: [],
-};
-
- 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
-  theme: {
-    extend: {
-      colors: {
-        primary: "#5f6FFF",
-      },
-      gridTemplateColumns: {
-        auto: 'repeat(auto-fill, minmax(200px, 1fr))'
-      },
-    },
-  },
-  plugins: [],
-};
-
- 
-bg-blue-50
- 
-overflow-hidden
+        setExperience("");
  
 
-        'auto-fit': 'repeat(auto-fit, minmax(0, 1fr))',
+        setSpeciality("");
+ 
+console.log()
+ 
+data.message
+ 
+backendUrl
  
 
-import {doctor
+              <input type="text" placeholder="Experience" required />
  
-            onClick={()=>scrollTo(0,0)}
+Fees
  
-
-import Speciality from "../Components/SpecialityMenu";
+ type="text" 
  
-bg-red-500
+Doctor Password
  
-bg-orange-400
+password
  
-bg-gray-200
+Doctor Password
  
-bg-red-500
+password
  
-items-start justify-start
+Doctor Password
  
-md:m-0
+Neurologist
  
-bg-red-300
+Cardiology
  
-items-start justify-center
+Cardiology
  
-g-orange-400
+Cardiology
  
-bg-red-500
+Cardiology
  
-bg-red-400
+Cardiology
  
-bg-red-300
+Cardiology
  
-bg-red-300
+ardiology
  
- h-auto
+Cardiology
  
-className="w-full md:absolute bottom-0 rounded-lg h-auto"
+Cardiology
  
-justify-center
+Cardiology
  
-Doctors
+Cardiology
  
-doctors,
+Cardiology
  
-Doctors
+Your Name
  
-relative
+0-5
  
-
-import header_img from './doc-header-img.png'
+Your Name
  
-flex bg-blue-500"
- 
-navigate("my-profile")
- 
-"./logo.png
+Your Name
  
 assests
  
 
-        <Route path="/login" element={<Login />} />
+    <div>
+      AddDoctor
+    </div>
+ 
+ border-r-4
+ 
+all-appointments
+ 
+all-appointments
+ 
+admin-dashboard
+ 
+Dashboard
+ 
+Dashboard
+ 
+All appointment_icon
+ 
+home_icon
+ 
+home_icon
+ 
+? <h1>Logged in</h1> : <h1>Logged
+ 
+<DoctorList>
+ 
+<AddDoctor>
+ 
+<AllAppointments>
+ 
+<Dashboard>
+ 
+"bg-primary"
+ 
+import { createContext, useState } from "react";
+
+export const AdminContext = createContext();
+// export const AdminContext = createContext();
+const AdminContextProvider = (props) => {
+  const [aToken, setAToken] = useState(
+    localStorage.getItem("aToken") ? localStorage.getItem("aToken") : ""
+  );
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const value = {
+    aToken,
+    setAToken,
+    backendUrl,
+  };
+
+  return (
+    <AdminContext.Provider value={value}>
+      {props.children}
+    </AdminContext.Provider>
+  );
+};
+// export default AdminContextProvider;
+export default AdminContextProvider;
+
+ 
+ppContext
  
 
-import My_Appointment from "../src/Pages/MyAppointments"
+      <Login />
  
-tart Project Bismillah
- 
-resolve: {
-  extensions: ['.js', '.jsx', '.json'],
-},
+const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      if (state === "Admin") {
+        const { data } = await axios.post(backendUrl + "/api/admin/login", {
+          email,
+          password,
+        });
 
- 
-<Home>
- 
-
-    ष।
- 
-
-    <div className="flex flex-row justify-center items-center bg-blue-700"></div>
- 
-
-  </React.StrictMode>
- 
-
-  <React.StrictMode>
- 
-export const doctors = [
-  {
-    id: 1,
-    name: "Dr. Richard Jmes",
-    speciality: "General physician",
-    image: doc1,
-    degree: "MBBS",
-    experience: "4 Years",
-    about:
-      "Dr .davis has a strong commitment to delivering comprehensive medical care",
-    fees: 50,
-    address: {
-      line1: "37th Cross, Richmond",
-      line2: "Bangalore, Karnataka",
-    },
-  },
-  // Add more doctors here
-];
+        if (data.success) {
+          localStorage.setItem("aToken", data.token);
+          setAToken(data.token);
+        }
+      } else {
+        toast.error(data.message);
+        
+      }
+      console.log(data.message)
+    } catch (error) {
+      // console.log("error");
+    }
+  };
  
 
-  {
-    speciality: "Cardiologist",
-    image: Cardiologist,
-  }
+import { ToastContainer, toast } from 'react-toastify';
+ 
+console.log
+ 
+/api
+ 
+Click
+ 
+setToken(data.token)
+ 
+ const { data } = await axios.post(backendUrl + "/api/admin/login", {
+          email,
+          password,
+        });
+ 
+onClick
+ 
+`${backendUrl}/admin/login`
+ 
+response
  
 
-import doc15 from "./doc15.png"
+        const response = await fetch(`${backendUrl}/login`, {
  
 
-      <h1 className="text-white font-[700] text-[32px]">Bismillah</h1>
+        <div></div>
  
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+AppContext
+ 
+AppContext
+ 
+className='text-2xl text-gray-500'
+ 
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
+      hello
+ 
+  
+      gridTemplateColumns: {
+        // Change the name from 'auto' to something that makes sense
+        'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
+      },
+ 
+colors: {
+        primary: "#5f6FFF",
+      },
  
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [],
   theme: {
     extend: {},
@@ -622,46 +565,199 @@ module.exports = {
 
 
  
-React App
+Vite + React
  
-import './App.css';
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
  
-  <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-      </header>
- 
-  <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
-      </header>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
+
+export default App
+
  
-import logo from './logo.svg';
+"start": "PORT=3001 react-scripts start"
  
 
+    "start": "react-scripts start",
+ 
+"start": "react-scripts start",
+ 
+{
+  "name": "lch-project",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2",
+    "axios": "^1.7.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7"
+  }
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ 
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+export default defineConfig({
+  plugins: [react()]
+});
+
+ 
+
+    "eject": "react-scripts eject"
+ 
+
+    "test": "react-scripts test",
+ 
+// Production build
+ 
+
+    "build": "react-scripts build",
+ 
+"start": "react-scripts start",
+ 
+// Vite development server start karega
+ 
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
  
