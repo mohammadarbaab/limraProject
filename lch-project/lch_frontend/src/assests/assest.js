@@ -17,10 +17,11 @@ import Gastroenterologist from "./Gastroenterologist.svg";
 import General_physician from "./General_physician.svg";
 import Neurologist from "./Neurologist.svg";
 import Pediatricians from "./Pediatricians.svg";
-import header_img from "./doc-header-img.png";
+import header_img from "../assests/header_logo.png";
 import Gynecologist from "./Gynecologist.svg";
 import Dermatologist from "./Dermatologist.svg";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
+import logo from "../assests/lch_logo.PNG"
 import profile_pic from "./profile_image.png";
 import dropdown_icon from "./dropdow_icon.svg"
 import group_profiles from "./group_profiles.png"

@@ -19,7 +19,7 @@ function Navbar() {
         src={assets.logo}
         alt=""
         onClick={() => navigate("/")}
-        className="w-44 cursor-pointer"
+        className="w-[100px] cursor-pointer"
       />
       <ul className="hidden md:flex items-start gap-5 font-medium">
         <NavLink to="/">

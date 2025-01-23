@@ -17,7 +17,7 @@ function Navbar() {
     <div className="flex justify-between items-center px-4 sm:px-10 py-3 border-b bg-white">
       <div className="flex items-center gap-2 text-xs">
         <img
-          className="w-36 sm:w-40 cursor-pointer "
+          className="w-36 sm:w-[100px] cursor-pointer "
           src={assets.admin_logo}
           alt=""
         />

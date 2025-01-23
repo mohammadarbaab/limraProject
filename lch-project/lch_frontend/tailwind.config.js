@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#5f6FFF",
+        primary: "#800080",
       },
       gridTemplateColumns: {
         // Change the name from 'auto' to something that makes sense

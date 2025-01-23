@@ -32,11 +32,11 @@ function Header() {
         </a>
       </div>
       {/* --------right side------- */}
-      <div className="md:w-1/2 relative">
+      <div className="md:w-1/2 relative justify-center items-center flex">
         <img
           src={assets.header_img}
           alt="header_img"
-          className="w-full md:absolute bottom-0 rounded-lg h-auto"
+          className="md:absolute bottom-0 rounded-lg h-auto"
         />
       </div>
     </div>

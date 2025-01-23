@@ -32,7 +32,11 @@ function Doctors() {
         >
           Filters
         </button>
-        <div className={`flex-col gap-4 text-sm text-gray-600 ${showFilter ? 'flex':'hidden sm:flex'}`}>
+        <div
+          className={`flex-col gap-4 text-sm text-gray-600 ${
+            showFilter ? "flex" : "hidden sm:flex"
+          }`}
+        >
           <p
             onClick={() =>
               speciality === "General physician"
@@ -41,7 +45,7 @@ function Doctors() {
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded  transition-all cursor-pointer ${
               speciality === "General physician"
-                ? "bg-indigo-100 text-black"
+                ? "bg-[#D8BFD8] text-black"
                 : ""
             }`}
           >
@@ -54,7 +58,7 @@ function Doctors() {
                 : navigate("/doctors/Gynecologist")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded  transition-all cursor-pointer ${
-              speciality === "Gynecologist" ? "bg-indigo-100 text-black" : ""
+              speciality === "Gynecologist" ? "bg-[#D8BFD8] text-black" : ""
             }`}
           >
             Gynecologist
@@ -66,7 +70,7 @@ function Doctors() {
                 : navigate("/doctors/Dermatologist")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded  transition-all cursor-pointer ${
-              speciality === "Dermatologist" ? "bg-indigo-100 text-black" : ""
+              speciality === "Dermatologist" ? "bg-[#D8BFD8] text-black" : ""
             }`}
           >
             Dermatologist
@@ -78,7 +82,7 @@ function Doctors() {
                 : navigate("/doctors/Pediatricians")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded  transition-all cursor-pointer ${
-              speciality === "Pediatricians" ? "bg-indigo-100 text-black" : ""
+              speciality === "Pediatricians" ? "bg-[#D8BFD8] text-black" : ""
             }`}
           >
             Pediatricians
@@ -90,7 +94,7 @@ function Doctors() {
                 : navigate("/doctors/Neurologist")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded  transition-all cursor-pointer ${
-              speciality === "Neurologist" ? "bg-indigo-100 text-black" : ""
+              speciality === "Neurologist" ? "bg-[#D8BFD8] text-black" : ""
             }`}
           >
             Neurologist
@@ -103,7 +107,7 @@ function Doctors() {
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded  transition-all cursor-pointer ${
               speciality === "Gastroenterologist"
-                ? "bg-indigo-100 text-black"
+                ? "bg-[#D8BFD8] text-black"
                 : ""
             }`}
           >
@@ -117,7 +121,7 @@ function Doctors() {
               key={index}
               className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
             >
-              <img src={item.image} alt="" className="bg-blue-50" />
+              <img src={item.image} alt="" className="bg-[#800080]" />
               <div className="p-4 ">
                 <div className="flex items-center gap-2 text-sm text-center text-green-500">
                   <p className="w-2 h-2 bg-green-500 rounded-full"></p>
