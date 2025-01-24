@@ -5,8 +5,11 @@ function Header() {
   return (
     <div className="flex flex-col md:flex-row flex-wrap bg-primary  rounded-lg px-6 md:px-10 lg:px-[20px]">
       {/* ---------left side */}
-      <div className="md:w-1/2 flex flex-col  gap-6 py-10 justify-start items-end md:py-[8vw] px-8">
+      <div className="md:w-1/2 flex flex-col  gap-6 py-10 justify-start items-start md:py-[8vw] px-8">
         <p className="text-3xl md:text-4xl lg:text-[46px] text-white font-semibold leading-tight md:leading-tight lg:leading-tight">
+          Limra Child Clinic
+        </p>
+        <p className="text-3xl md:text-4xl lg:text-[30px] text-white font-semibold leading-tight md:leading-tight lg:leading-tight">
           Book Appointment
           <br />
           With Trusted Doctors

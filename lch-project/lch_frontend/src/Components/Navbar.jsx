@@ -7,12 +7,12 @@ function Navbar() {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   // const [token, setToken] = useState(true);
-  const {token,setToken}=useContext(AppContext)
+  const { token, setToken, userData } = useContext(AppContext);
 
-  const logout=()=>{
+  const logout = () => {
     setToken(false);
-    localStorage.removeItem('token')
-  }
+    localStorage.removeItem("token");
+  };
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
       <img
@@ -40,10 +40,10 @@ function Navbar() {
         </NavLink>
       </ul>
       <div className="flex items-center gap-4">
-        {token ? (
+        {token && userData ? (
           <div className="flex items-center gap-2 cursor-pointer group relative">
             <img
-              src={assets.profile_pic}
+              src={userData.image}
               alt="profile_pic"
               className="w-8 rounded-full"
             />
@@ -66,10 +66,7 @@ function Navbar() {
                 >
                   My Appointments
                 </p>
-                <p
-                  onClick={logout}
-                  className="hover:text-black cursor-pointer"
-                >
+                <p onClick={logout} className="hover:text-black cursor-pointer">
                   Logout
                 </p>
               </div>
