@@ -28,7 +28,7 @@ function Login() {
           setToken(data.token);
         } else {
           toast.error(data.message);
-          console.log("this is error")
+          console.log("this is error");
         }
       } else {
         const { data } = await axios.post(backendUrl + "/api/user/login", {
@@ -39,13 +39,12 @@ function Login() {
           localStorage.setItem("token", data.token);
           setToken(data.token);
         } else {
-          toast.error(data.message);
-          console.log("error this is")
+          toast.error("User is not available in database");
         }
       }
     } catch (error) {
       console.log("error catch side");
-      toast.error("error",toast.message);
+      toast.error("error", toast.message);
     }
   };
 

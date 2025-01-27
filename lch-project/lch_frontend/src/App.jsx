@@ -9,13 +9,15 @@ import MyAppointments from "../src/Pages/MyAppointments";
 import Appointment from "./Pages/Appointment";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="mx-4 sm:mx-[10%]">
-    <ToastContainer />
+    <div className="mx-4 sm:mx-[5%]">
+      <ToastContainer 
+        toastClassName="bg-red-500 text-white font-semibold" // Optional: styling individual toasts
+      />
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home />} />
