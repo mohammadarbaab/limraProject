@@ -9,6 +9,7 @@ const AdminContextProvider = (props) => {
   );
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [doctors, setDoctors] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   // // Inside your component
   // useEffect(() => {
@@ -67,7 +68,7 @@ const AdminContextProvider = (props) => {
       );
       console.log("data success", data);
       // the small error create big mistake
-      // the error is missed i forgetes the succes 
+      // the error is missed i forgetes the succes
       if (data.success) {
         toast.success(data.message);
 
@@ -86,6 +87,44 @@ const AdminContextProvider = (props) => {
       toast.error(error.message);
     }
   };
+  // get all apoointments
+  const getAllAppointments = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + "/api/admin/appointments", {
+        headers: { aToken },
+      });
+      if (data.success) {
+        setAppointments(data.appointments);
+        console.log("this is appointments data", data.appointments);
+      } else {
+        toast.error("Error");
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
+
+  const cancelAppointment = async (appointmentId) => {
+    try {
+      const { data } = await axios.post(
+        backendUrl + "/api/admin/cancel-appointment",
+        {
+          appointmentId,
+        },
+        { headers: { aToken } }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        getAllAppointments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
   const value = {
     aToken,
     setAToken,
@@ -93,6 +132,10 @@ const AdminContextProvider = (props) => {
     doctors,
     getAllDoctors,
     changeAvailability,
+    getAllAppointments,
+    appointments,
+    setAppointments,
+    cancelAppointment,
   };
 
   return (
