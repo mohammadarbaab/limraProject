@@ -12,6 +12,7 @@ import doc11 from "./doc11.png";
 import doc12 from "./doc12.png";
 import doc13 from "./doc13.png";
 import doc14 from "./doc14.png";
+import doc18 from "../assests/doc18.png";
 import appointment_img from "./appointment-doc-img.png";
 import Gastroenterologist from "./Gastroenterologist.svg";
 import General_physician from "./General_physician.svg";
@@ -21,17 +22,18 @@ import header_img from "../assests/header_logo.png";
 import Gynecologist from "./Gynecologist.svg";
 import Dermatologist from "./Dermatologist.svg";
 // import logo from "./logo.svg";
-import logo from "../assests/lch_logo.PNG"
+import logo from "../assests/lch_logo.PNG";
 import profile_pic from "./profile_image.png";
-import dropdown_icon from "./dropdow_icon.svg"
-import group_profiles from "./group_profiles.png"
-import arrow_icon from "./arrow_icon.svg"
-import verify_icon from "../assests/verify_doc.png"
-import info_icon from "../assests/info_icon.png"
-import about_image from "../assests/about_image.png"
+import dropdown_icon from "./dropdow_icon.svg";
+import group_profiles from "./group_profiles.png";
+import arrow_icon from "./arrow_icon.svg";
+import verify_icon from "../assests/verify_doc.png";
+import info_icon from "../assests/info_icon.png";
+import about_image from "../assests/about_image.png";
 import contact_image from "../assests/contact_image.png";
-import menu_bar from "../assests/menu-bar.png"
-import cross_icon from "../assests/close.png"
+import menu_bar from "../assests/menu-bar.png";
+import cross_icon from "../assests/close.png";
+import doc19 from "../assests/doc19.png"
 export const assets = {
   logo,
   appointment_img,
@@ -48,6 +50,7 @@ export const assets = {
   menu_bar,
   cross_icon,
   dropdown_icon,
+  doc19,
   // upload_icon,
   // stripe_logo,
   // razorpay_logo,

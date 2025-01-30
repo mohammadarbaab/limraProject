@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
 import Doctors from "../src/Pages/Doctors";
 import Login from "../src/Pages/Login";
 import About from "../src/Pages/About";
@@ -11,11 +10,14 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import Home from "./Test/Home";
+import Home from "./Pages/Home";
+
 
 function App() {
   return (
     <div className="mx-4 sm:mx-[5%]">
-      <ToastContainer 
+      <ToastContainer
         toastClassName="bg-red-500 text-white font-semibold" // Optional: styling individual toasts
       />
       <Navbar></Navbar>
