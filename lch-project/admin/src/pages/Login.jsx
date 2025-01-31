@@ -3,12 +3,14 @@ import { assets } from "../assets/assets";
 import { AdminContext } from "../context/AdminContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { DoctorContext } from "../context/DoctorContext";
 
 function Login() {
   const [state, setState] = useState("Admin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAToken, backendUrl } = useContext(AdminContext);
+  const { setDToken } = useContext(DoctorContext);
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -23,15 +25,26 @@ function Login() {
           localStorage.setItem("aToken", data.token);
           setAToken(data.token);
         } else {
-          toast.error(data.message || "An error occurred");  // Ensure message exists
+          toast.error(data.message || "An error occurred"); // Ensure message exists
           console.log(data.message); // Check if data.message is available
         }
       } else {
-        toast.error("Invalid state or error");  // Fallback error message
+        const { data } = await axios.post(backendUrl + "/api/doctor/login", {
+          email,
+          password,
+        });
+        if (data.success) {
+          localStorage.setItem("dToken", data.token);
+          setDToken(data.token);
+          console.log(data.token)
+        } else {
+          toast.error(data.message || "An error occurred"); // Ensure message exists
+          console.log(data.message); // Check if data.message is available
+        }
       }
     } catch (error) {
       toast.error("Invalid creadientials");
-      console.error(error);  // Log the error for debugging
+      console.error(error); // Log the error for debugging
     }
   };
 
