@@ -8,6 +8,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
   // const [token, setToken] = useState(true);
   const { token, setToken, userData } = useContext(AppContext);
+  // bg state for nav options
 
   const logout = () => {
     setToken(false);
@@ -21,24 +22,35 @@ function Navbar() {
         onClick={() => navigate("/")}
         className="w-[100px] cursor-pointer"
       />
-      <ul className="hidden md:flex items-start gap-5 font-medium">
-        <NavLink to="/">
-          <li className="py-1">Home</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/doctors">
-          <li className="py-1">All doctors</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/about">
-          <li className="py-1">About</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-        <NavLink to="/contact">
-          <li className="py-1">Contact</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
-        </NavLink>
-      </ul>
+      <div className="flex flex-wrap bg-gray-50 px-8 py-2 rounded-full shadow-sm shadow-[#B266B2]">
+        <ul className="hidden md:flex items-start gap-8 font-medium">
+          <NavLink to="/">
+            <li className="py-1 hover:scale-125 hover:cursor-pointer transition-transform">
+              Home
+              <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+            </li>
+          </NavLink>
+          <NavLink to="/doctors">
+            <li className="py-1 hover:scale-125 hover:cursor-pointer transition-transform">
+              Find a Specialist
+            </li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          </NavLink>
+          <NavLink to="/about">
+            <li className="py-1 hover:scale-125 hover:cursor-pointer transition-transform">
+              Why Choose Us
+            </li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          </NavLink>
+          <NavLink to="/contact">
+            <li className="py-1 hover:scale-125 hover:cursor-pointer transition-transform">
+              Reach Out to Us
+            </li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          </NavLink>
+        </ul>
+      </div>
+      {/* Dropdown start here */}
       <div className="flex items-center gap-4">
         {token && userData ? (
           <div className="flex items-center gap-2 cursor-pointer group relative">
@@ -52,23 +64,51 @@ function Navbar() {
               src={assets.dropdown_icon}
               alt="dropdown_icon"
             />
-            <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block">
-              <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
-                <p
-                  onClick={() => navigate("my-profile")}
-                  className="hover:text-black cursor-pointer"
-                >
-                  My Profile
-                </p>
-                <p
-                  onClick={() => navigate("my-appointments")}
-                  className="hover:text-black cursor-pointer"
-                >
-                  My Appointments
-                </p>
-                <p onClick={logout} className="hover:text-black cursor-pointer">
-                  Logout
-                </p>
+            <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block ">
+              <div className="min-w-48 bg-white rounded-md flex flex-col gap-4 p-4 shadow-md shadow-[#B266B2] border border-gray-200">
+                <div className="flex flex-row flex-wrap gap-2">
+                  <img
+                    src={userData.image}
+                    alt="profile_pic"
+                    className="w-8 rounded-full"
+                  />
+                  <div className="flex flex-col flex-wrap items-start leading-5 justify-center">
+                    <h2 className=" text-gray-600 font-bold">
+                      {userData.name}
+                    </h2>
+                    <p className="text-[12px] text-gray-400">
+                      {userData.email}
+                    </p>
+                  </div>
+                </div>
+                <hr className=" border-black" />
+                <div className="flex flex-wrap flex-row gap-2 items-center">
+                  <img src={assets.myProfileIcon} alt="profileIcon" />
+                  <p
+                    onClick={() => navigate("my-profile")}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    My Profile
+                  </p>
+                </div>
+                <div className="flex flex-wrap flex-row gap-2 items-center">
+                  <img src={assets.appointment_logo} alt="" />
+                  <p
+                    onClick={() => navigate("my-appointments")}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    My Appointments
+                  </p>
+                </div>
+                <div className="flex flex-wrap flex-row gap-2 items-center">
+                  <img src={assets.logoutIcon} alt="" />
+                  <p
+                    onClick={logout}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                </div>
               </div>
             </div>
           </div>

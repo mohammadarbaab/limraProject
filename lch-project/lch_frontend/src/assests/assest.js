@@ -34,11 +34,17 @@ import contact_image from "../assests/contact_image.png";
 import menu_bar from "../assests/menu-bar.png";
 import cross_icon from "../assests/close.png";
 import doc19 from "../assests/doc19.png"
+import logoutIcon from "../assests/signoutIcon.png";
+import myProfileIcon from "../assests/pfIcon.png";
+import appointment_logo from "../assests/appointment.png"
 export const assets = {
   logo,
   appointment_img,
   header_img,
   group_profiles,
+  logoutIcon,
+  myProfileIcon,
+  appointment_logo,
 
   // chats_icon,
   verify_icon,

@@ -44,7 +44,7 @@ function Header() {
     //   </div>
     // </div>
     // main div
-    <div className="flex flex-wrap flex-col justify-center items-center lg:flex-row w-full h-auto bg-[#fef8e9] overflow-hidden relative">
+    <div className="flex flex-wrap flex-col justify-center items-center lg:flex-row w-full h-auto bg-[#fef8e9] overflow-hidden relative rounded-lg shadow-2xl">
       {/* left div */}
       <div className="flex flex-wrap flex-col lg:w-1/2 lg:justify-start lg:items-start lg:gap-6 gap-6 lg:pl-12 justify-center items-center w-full lg:p-0 p-6 ">
         <h1 className="lg:text-[36px] lg:font-semibold md:text-[36px] sm:text-[32px] md:font-semibold text-[20px]  font-semibold text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-800 to-yellow-500 tracking-normal md:leading-[50px]">
