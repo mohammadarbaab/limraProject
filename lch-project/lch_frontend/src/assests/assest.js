@@ -14,13 +14,13 @@ import doc13 from "./doc13.png";
 import doc14 from "./doc14.png";
 import doc18 from "../assests/doc18.png";
 import appointment_img from "./appointment-doc-img.png";
-import Gastroenterologist from "./Gastroenterologist.svg";
-import General_physician from "./General_physician.svg";
-import Neurologist from "./Neurologist.svg";
-import Pediatricians from "./Pediatricians.svg";
+import Gastroenterologist from "./gastro icon.png";
+// import General_physician from "./General_physician.svg";
+import Neurologist from "./nuro icon.png";
+import Pediatricians from "./pedia icon.png";
 import header_img from "../assests/header_logo.png";
-import Gynecologist from "./Gynecologist.svg";
-import Dermatologist from "./Dermatologist.svg";
+import Gynecologist from "./giano icon.png";
+import Dermatologist from "./derma icon.png";
 // import logo from "./logo.svg";
 import logo from "../assests/lch_logo.PNG";
 import profile_pic from "./profile_image.png";
@@ -36,10 +36,12 @@ import cross_icon from "../assests/close.png";
 import doc19 from "../assests/doc19.png"
 import logoutIcon from "../assests/signoutIcon.png";
 import myProfileIcon from "../assests/pfIcon.png";
-import appointment_logo from "../assests/appointment.png"
+import appointment_logo from "../assests/appointment.png";
+import generalPhy_icon from "../assests/gn py icon.png"
 export const assets = {
   logo,
   appointment_img,
+  
   header_img,
   group_profiles,
   logoutIcon,
@@ -65,7 +67,7 @@ export const assets = {
 export const specialityData = [
   {
     speciality: "General physician",
-    image: General_physician,
+    image: generalPhy_icon,
   },
   {
     speciality: "Gastroenterologist",
