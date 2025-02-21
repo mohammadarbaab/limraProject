@@ -70,7 +70,7 @@ function AddDoctor() {
       }
     } catch (error) {
       console.error(error);
-      toast.error(error.message);
+      toast.error("new doctor data is no post");
     }
   };
 
