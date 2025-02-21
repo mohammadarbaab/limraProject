@@ -16,7 +16,7 @@ function TopDoctors() {
           <div
             onClick={() => navigate(`/appointment/${item._id}`)}
             key={index}
-            className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer transform hover:translate-y-[-10px] transition-all duration-500 shadow-lg hover:shadow-2xl flex flex-col items-center py-4"
+            className="border border-blue-200 rounded-3xl overflow-hidden cursor-pointer transform hover:translate-y-[-10px] transition-all duration-500 shadow-lg hover:shadow-2xl flex flex-col items-center py-4"
 
           >
             <img src={item.image} alt="" className="bg-[#D8BFD8] rounded-full w-[60px] h-[70px]" />
@@ -27,7 +27,7 @@ function TopDoctors() {
               </div> */}
               <p className="text-gray-900 text-lg font-medium">{item.name}</p>
               <p className="text-gray-600 text-sm text-center">{item.speciality}</p>
-              <button className="bg-[#800080] px-6 py-1 mt-2 rounded-2xl text-white ">Details</button>
+              <button className="bg-[#800080] px-6 py-[2px] mt-2 rounded-2xl text-white ">Details</button>
             </div>
           </div>
         ))}

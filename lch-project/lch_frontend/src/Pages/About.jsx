@@ -4,10 +4,10 @@ import { assets } from "../assests/assest";
 function About() {
   return (
     <div>
-      <div className="text-center text-2xl pt-10 text-gray-500">
-        <p>
-          ABOUT <span className="text-gray-700 font-medium">US</span>
-        </p>
+      <div className="justify-center items-center flex">
+        <div className="text-white bg-primary px-4 py-2 text-[18px] rounded-xl font-medium">
+          MEET OUR TEAM
+        </div>
       </div>
       <div className="my-10 flex flex-col md:flex-row gap-12">
         <img
