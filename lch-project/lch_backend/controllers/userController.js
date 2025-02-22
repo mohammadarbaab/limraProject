@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import { v2 as cloudinary } from "cloudinary";
 import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
-import razorpay from 'razorpay';
+import razorpay from "razorpay";
 
 const registerUser = async (req, res) => {
   try {
@@ -97,7 +97,7 @@ const updateProfile = async (req, res) => {
       name,
       phone,
       address: JSON.parse(address),
-      dob,
+      dob: JSON.stringify(dob),
       gender,
     });
 
@@ -146,7 +146,8 @@ const bookAppointment = async (req, res) => {
 
     const appointmentData = {
       userId,
-      doctorId: docId,
+      docId,
+      // doctorId: docId,
       // userData: {
       //   id: userData._id,
       //   name: userData.name,
@@ -200,8 +201,8 @@ const cancelAppointment = async (req, res) => {
       cancelled: true,
     });
     // update doctor slots data
-    const { doctorId, slotDate, slotTime } = appointmentData;
-    const doctorData = await doctorModel.findById(doctorId);
+    const { docId, slotDate, slotTime } = appointmentData;
+    const doctorData = await doctorModel.findById(docId,);
     if (!doctorData) {
       return res.json({
         success: false,
@@ -214,13 +215,13 @@ const cancelAppointment = async (req, res) => {
         (e) => e !== slotTime
       );
     }
-    console.log("Doctor ID:", doctorId);
+    console.log("Doctor ID:", docId,);
     console.log("Doctor Data:", doctorData);
     // remove cancelled appointment from slots booked
     slots_booked[slotDate] = slots_booked[slotDate].filter(
       (e) => e !== slotTime
     );
-    await doctorModel.findByIdAndUpdate(doctorId, { slots_booked });
+    await doctorModel.findByIdAndUpdate(docId, { slots_booked });
     res.json({ success: true, message: "Appointment cancelled successfully" });
   } catch (error) {
     console.log(error);
@@ -228,14 +229,12 @@ const cancelAppointment = async (req, res) => {
   }
 };
 
-const razorpayInstance=new razorpay({
-  key_id: 'YOUR_KEY_ID', 
-  key_secret: 'YOUR_KEY_SECRET',
-})
+const razorpayInstance = new razorpay({
+  key_id: "YOUR_KEY_ID",
+  key_secret: "YOUR_KEY_SECRET",
+});
 // api to make a appointment razorpay
-const paymentRazorpay=async(req,res)=>{
-
-}
+const paymentRazorpay = async (req, res) => {};
 export {
   registerUser,
   getProfile,
