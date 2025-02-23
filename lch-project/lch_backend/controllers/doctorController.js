@@ -69,7 +69,7 @@ const appointmentsDoctor = async (req, res) => {
 };
 
 // API TO MARK COMPLETED fo doctor panel
-const appointmentComplete = async (req,res) => {
+const appointmentComplete = async (req, res) => {
   try {
     const { docId, appointmentId } = req.body;
     const appointmentData = await appointmentModel.findById(appointmentId);
@@ -89,7 +89,7 @@ const appointmentComplete = async (req,res) => {
   }
 };
 // API TO MARK cancle fo doctor panel
-const appointmentCancel = async (req,res) => {
+const appointmentCancel = async (req, res) => {
   try {
     const { docId, appointmentId } = req.body;
     const appointmentData = await appointmentModel.findById(appointmentId);
@@ -108,6 +108,38 @@ const appointmentCancel = async (req,res) => {
     console.log("appointment is not successfully fetch");
   }
 };
+
+// api to get dashboard data for doctor dashboard
+const doctorDashboard = async (req,res) => {
+  try {
+    const {docId}=req.body;
+    const appointments=await appointmentModel.find({docId});
+    let earning=0;
+    appointments.map((item)=>{
+      if(item.isCompleted || item.payment){
+        earning+=item.amount;
+      }
+    });
+    let patients=[];
+
+    appointments.map((item)=>{
+      if(!patients.includes(item.userId)){
+        patients.push(item.userId)
+      }
+    });
+    const dashData={
+      earning,
+      appointments:appointments.length,
+      patients:patients.length,
+      latestAppointment:appointments.reverse().slice(0,5)
+    };
+    res.json({success:true,dashData});
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    console.log("appointment is not successfully fetch");
+  }
+};
 export {
   changeAvailablity,
   doctorList,
@@ -115,4 +147,5 @@ export {
   appointmentsDoctor,
   appointmentCancel,
   appointmentComplete,
+  doctorDashboard
 };
