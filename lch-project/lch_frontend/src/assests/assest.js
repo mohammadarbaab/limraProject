@@ -42,13 +42,37 @@ import insta_icon from "../assests/instagram.png"
 import fb_icon from "../assests/facebook.png";
 import mail_icon from "../assests/mail.png";
 import twitter from "../assests/twitter.png"
+import lch_logo from "../assests/lch_logo.PNG"
+import placeholder from "../assests/placeholder.png";
+import technical_support from "../assests/technical-support.png";
+import customer_service from "../assests/customer-service.png";
+import customer_support from "../assests/customer-support.png";
+import appointment_icon from "../assests/appointment copy.png";
+import clock_icon from "../assests/clock.png";
+import gear_icon from "../assests/icons8-gear-50.png";
+import litter_icon from "../assests/litter.png";
+import star from "../assests/star.png";
+import schedule_icon from "../assests/schedule.png"
+import price_tag from "../assests/price-tag.png"
 export const assets = {
   logo,
   fb_icon,
+  price_tag,
+  appointment_icon,
+  clock_icon,
+  gear_icon,
+  litter_icon,
+  star,
+  schedule_icon,
+  technical_support,
+  customer_service,
+  customer_support,
+  placeholder,
   appointment_img,
   mail_icon,
   insta_icon,
   twitter,
+  lch_logo,
   header_img,
   group_profiles,
   logoutIcon,
