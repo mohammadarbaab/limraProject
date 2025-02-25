@@ -38,10 +38,17 @@ import logoutIcon from "../assests/signoutIcon.png";
 import myProfileIcon from "../assests/pfIcon.png";
 import appointment_logo from "../assests/appointment.png";
 import generalPhy_icon from "../assests/gn py icon.png"
+import insta_icon from "../assests/instagram.png"
+import fb_icon from "../assests/facebook.png";
+import mail_icon from "../assests/mail.png";
+import twitter from "../assests/twitter.png"
 export const assets = {
   logo,
+  fb_icon,
   appointment_img,
-  
+  mail_icon,
+  insta_icon,
+  twitter,
   header_img,
   group_profiles,
   logoutIcon,
