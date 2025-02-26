@@ -49,6 +49,8 @@ function AllAppointments() {
               </p>
               {appointment.cancelled ? (
                 <p>cancelled</p>
+              ) : appointment.isCompleted ? (
+                <p className="text-green-400 text-xs font-medium">Completed</p>
               ) : (
                 <img
                   onClick={() => cancelAppointment(appointment._id)}

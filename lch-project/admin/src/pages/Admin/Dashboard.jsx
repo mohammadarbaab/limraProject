@@ -64,14 +64,16 @@ function Dashboard() {
                   <p className="text-gray-800 ">{item.docData.name}</p>
                   <p>{slotDateFormat(item.slotDate)}</p>
                 </div>
-                  {item.cancelled ? (
-                    <p className="text-red-400 text-xs font-medium">cancelled</p>
-                  ) : (
-                    <img
-                      onClick={() => cancelAppointments(item._id)}
-                      src={assets.cancel_icon}
-                    />
-                  )}
+                {item.cancelled ? (
+                <p>cancelled</p>
+              ) : item.isCompleted ? (
+                <p className="text-green-400 text-xs font-medium">Completed</p>
+              ) : (
+                <img
+                  onClick={() => cancelAppointments(appointment._id)}
+                  src={assets.cancel_icon}
+                />
+              )}
               </div>
             ))}
           </div>
