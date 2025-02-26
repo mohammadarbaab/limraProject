@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function MyAppointments() {
-  const { backendUrl, token,getDoctorsData } = useContext(AppContext);
+  const { backendUrl, token, getDoctorsData } = useContext(AppContext);
 
   const [appointments, setAppointments] = useState([]);
   const months = [
@@ -66,7 +66,7 @@ function MyAppointments() {
   useEffect(() => {
     if (token) {
       getUserAppointments();
-      getDoctorsData(); 
+      getDoctorsData();
     }
   }, [token]);
   return (
@@ -118,12 +118,16 @@ function MyAppointments() {
                   Cencle appointment
                 </button>
               )}
-              {
-                item.cancelled && !item.isCompleted &&  <button className="sm:min-w-48 py-2 border border-red-500 rounded text-red-500">Appointment cancelled</button>
-              }
-              {
-                item.isCompleted && <button className="sm:min-w-48 py-2 border border-green-500 rounded text-green-500 ">Completed</button>
-              }
+              {item.cancelled && !item.isCompleted && (
+                <button className="sm:min-w-48 py-2 border border-red-500 rounded text-red-500">
+                  Appointment cancelled
+                </button>
+              )}
+              {item.isCompleted && (
+                <button className="sm:min-w-48 py-2 border border-green-500 rounded text-green-500 ">
+                  Completed
+                </button>
+              )}
             </div>
           </div>
         ))}
