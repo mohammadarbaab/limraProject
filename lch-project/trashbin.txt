@@ -1,3 +1,2160 @@
+app.use(express.static(path.join(_dirname,"/lch_frontend/dist")));
+ 
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+ 
+
+    // "start": "node server.js",
+ 
+
+// add this line
+ 
+<div className="flex items-center gap-2 text-sm text-center text-green-500">
+                  <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                  <p>Available</p>
+                </div>
+ 
+ <div className="flex items-center gap-2 text-sm text-center text-green-500">
+                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                <p>Available</p>
+              </div>
+ 
+Available
+ 
+cancelAppointment
+ 
+  {item.cancelled ? (
+                    <p className="text-red-400 text-xs font-medium">cancelled</p>
+                  ) : (
+                    <img
+                      onClick={() => cancelAppointments(item._id)}
+                      src={assets.cancel_icon}
+                    />
+                  )}
+ 
+: <></>
+ 
+!item.payment && !item.isCompleted &&
+ 
+
+        name:profileData.name, 
+        email:profileData.email,
+ 
+{() => setIsEdit(false)}
+ 
+{profileData.address.line2}
+ 
+ rounded-lg shadow-lg
+ 
+rounded-lg shadow-lg max-w-2xl
+ 
+   {/* <div className="flex flex-wrap flex-row bg-gray-300 justify-center gap-8 p-8">
+          <div>
+            {isEdit ? (
+              <label htmlFor="image">
+                <div className="inline-block relative cursor-pointer">
+                  <img
+                    className="w-36 rounded opacity-75"
+                    src={image ? URL.createObjectURL(image) : userData.image}
+                    alt=""
+                  />
+                  <img
+                    className="w-10 absolute bottom-12  right-12 "
+                    src={image ? "" : assets.upload_icon}
+                    alt=""
+                  />
+                </div>
+                <input
+                  onChange={(e) => setImage(e.target.files[0])}
+                  type="file"
+                  id="image"
+                  hidden
+                />
+              </label>
+            ) : (
+              <img
+                className="w-36 rounded-3xl"
+                src={userData.image}
+                alt="profile_pic"
+              />
+            )}
+          </div>
+          <div>
+            {isEdit ? (
+              <input
+                type="text"
+                className="border rounded-lg p-2 border-gray-500 bg-gray-50 text-3xl font-medium max-w-52 mt-4 "
+                value={userData.name}
+                onChange={(e) =>
+                  setUserData((prev) => ({ ...prev, name: e.target.value }))
+                }
+              />
+            ) : (
+              <p className="font-medium text-3xl text-neutral-800 mt-4">
+                {userData.name}
+              </p>
+            )}
+            <div>
+              <p className="text-neutral-500 underline mt-3 ">
+                Contact Information
+              </p>
+              <div className="grid  grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700">
+                <div className="flex flex-col gap-2">
+                  <p className="font-medium ">Email Id:</p>
+                  <p className="text-blue-500">{userData.email}</p>
+                  <p className="font-medium">phone</p>
+                  {isEdit ? (
+                    <input
+                      type="number"
+                      className="border-gray-500 p-2 rounded-lg border bg-gray-100 max-w-52 "
+                      value={userData.phone}
+                      onChange={(e) =>
+                        setUserData((prev) => ({
+                          ...prev,
+                          phone: e.target.value,
+                        }))
+                      }
+                    />
+                  ) : (
+                    <p className="text-blue-400">{userData.phone}</p>
+                  )}
+                  <p className="font-medium">Address:</p>
+                  {isEdit ? (
+                    <p className="flex flex-col">
+                      <input
+                        type="text"
+                        className="border-gray-500 p-2 rounded-lg border bg-gray-100 max-w-52"
+                        onChange={(e) =>
+                          setUserData((prev) => ({
+                            ...prev,
+                            address: { ...prev.address, line: e.target.value },
+                          }))
+                        }
+                        value={userData.address.line}
+                      />
+                      <br />
+                      <input
+                        type="text"
+                        className="border-gray-500 p-2 rounded-lg border bg-gray-100 max-w-52"
+                        onChange={(e) =>
+                          setUserData((prev) => ({
+                            ...prev,
+                            address: { ...prev.address, line2: e.target.value },
+                          }))
+                        }
+                        value={userData.address.line2}
+                      />
+                    </p>
+                  ) : (
+                    <p className="text-gray-500">
+                      {userData.address.line}
+                      <br />
+                      {userData.address.line2}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-neutral-500 underline mt-3 ">
+                Contact Information
+              </p>
+              <div className="flex flex-col gap-2">
+                <p className="font-medium ">gender</p>
+                <p className="flex flex-col gap-4">
+                  {isEdit ? (
+                    <select
+                      className="max-w-20 bg-gray-100 "
+                      onChange={(e) =>
+                        setUserData((prev) => ({
+                          ...prev,
+                          gender: e.target.value,
+                        }))
+                      }
+                      value={userData.gender}
+                    >
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  ) : (
+                    <p className="text-gray-400">{userData.gender}</p>
+                  )}
+                 
+                </p>
+
+
+
+
+                
+                <p className="font-medium ">Birthday:</p>
+                  {isEdit ? (
+                    <input
+                      className="max-w-28 bg-gray-100"
+                      type="date"
+                      onChange={(e) =>
+                        setUserData((prev) => ({
+                          ...prev,
+                          dob: e.target.value,
+                        }))
+                      }
+                      value={userData.dob}
+                    />
+                  ) : (
+                    <p className="text-gray-400">{userData.dob}</p>
+                  )}
+              </div>
+            </div>
+
+            <div className="mt-10">
+              {isEdit ? (
+                <button
+                  className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all "
+                  onClick={updateUserProfileData}
+                >
+                  Save Information
+                </button>
+              ) : (
+                <button
+                  className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all"
+                  onClick={() => setIsEdit(true)}
+                >
+                  Edit
+                </button>
+              )}
+            </div>
+          </div>
+        </div> */}
+ 
+ <div>
+            {isEdit ? (
+              <input
+                type="text"
+                className="border rounded-lg p-2 border-gray-500 bg-gray-50 text-3xl font-medium max-w-52 mt-4 "
+                value={userData.name}
+                onChange={(e) =>
+                  setUserData((prev) => ({ ...prev, name: e.target.value }))
+                }
+              />
+            ) : (
+              <p className="font-medium text-3xl text-neutral-800 mt-4">
+                {userData.name}
+              </p>
+            )}
+            <div>
+              <p className="text-neutral-500 underline mt-3 ">
+                Contact Information
+              </p>
+              <div className="grid  grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700">
+                <div className="flex flex-col gap-2">
+                  <p className="font-medium ">Email Id:</p>
+                  <p className="text-blue-500">{userData.email}</p>
+                  <p className="font-medium">phone</p>
+                  {isEdit ? (
+                    <input
+                      type="number"
+                      className="border-gray-500 p-2 rounded-lg border bg-gray-100 max-w-52 "
+                      value={userData.phone}
+                      onChange={(e) =>
+                        setUserData((prev) => ({
+                          ...prev,
+                          phone: e.target.value,
+                        }))
+                      }
+                    />
+                  ) : (
+                    <p className="text-blue-400">{userData.phone}</p>
+                  )}
+                  <p className="font-medium">Address:</p>
+                  {isEdit ? (
+                    <p className="flex flex-col">
+                      <input
+                        type="text"
+                        className="border-gray-500 p-2 rounded-lg border bg-gray-100 max-w-52"
+                        onChange={(e) =>
+                          setUserData((prev) => ({
+                            ...prev,
+                            address: { ...prev.address, line: e.target.value },
+                          }))
+                        }
+                        value={userData.address.line}
+                      />
+                      <br />
+                      <input
+                        type="text"
+                        className="border-gray-500 p-2 rounded-lg border bg-gray-100 max-w-52"
+                        onChange={(e) =>
+                          setUserData((prev) => ({
+                            ...prev,
+                            address: { ...prev.address, line2: e.target.value },
+                          }))
+                        }
+                        value={userData.address.line2}
+                      />
+                    </p>
+                  ) : (
+                    <p className="text-gray-500">
+                      {userData.address.line}
+                      <br />
+                      {userData.address.line2}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-neutral-500 underline mt-3 ">
+                Contact Information
+              </p>
+              <div className="flex flex-col gap-2">
+                <p className="font-medium ">gender</p>
+                <p className="flex flex-col gap-4">
+                  {isEdit ? (
+                    <select
+                      className="max-w-20 bg-gray-100 "
+                      onChange={(e) =>
+                        setUserData((prev) => ({
+                          ...prev,
+                          gender: e.target.value,
+                        }))
+                      }
+                      value={userData.gender}
+                    >
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  ) : (
+                    <p className="text-gray-400">{userData.gender}</p>
+                  )}
+                 
+                </p>
+
+
+
+
+                
+                <p className="font-medium ">Birthday:</p>
+                  {isEdit ? (
+                    <input
+                      className="max-w-28 bg-gray-100"
+                      type="date"
+                      onChange={(e) =>
+                        setUserData((prev) => ({
+                          ...prev,
+                          dob: e.target.value,
+                        }))
+                      }
+                      value={userData.dob}
+                    />
+                  ) : (
+                    <p className="text-gray-400">{userData.dob}</p>
+                  )}
+              </div>
+            </div>
+
+            <div className="mt-10">
+              {isEdit ? (
+                <button
+                  className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all "
+                  onClick={updateUserProfileData}
+                >
+                  Save Information
+                </button>
+              ) : (
+                <button
+                  className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all"
+                  onClick={() => setIsEdit(true)}
+                >
+                  Edit
+                </button>
+              )}
+            </div>
+          </div>
+ 
+grid-cols-[1fr_3fr]
+ 
+
+            <hr className="bg bg-zinc-400 h-[1px] border-none" />
+ 
+
+// import Contact from "../src/Test/Contact"
+ 
+
+          <img src="" alt="userImage" />
+ 
+import React, { useState } from "react";
+import { assets } from "../assests/assest.js";
+import items from "./Data.js";
+
+function Contact() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+
+  // Toggle function to show/hide the description
+  const toggleDescription = (index) => {
+    setOpenIndex(openIndex === index ? null : index); // Close if the same is clicked, else open
+  };
+  return (
+    <>
+      <div className="flex flex-wrap flex-col justify-center items-center gap-16">
+        <div className="flex flex-col justify-center items-center gap-4 mt-4">
+          <img src={assets.lch_logo} alt="" className="w-12" />
+          <p className="flex flex-wrap text-4xl font-semibold">
+            Contact our friendly team
+          </p>
+          <p className="flex flex-wrap text-gray-500">
+            Let us know how we can help.
+          </p>
+        </div>
+        <div className="flex flex-wrap flex-row gap-4 w-[100%] items-center justify-center">
+          <div className="flex flex-wrap flex-col gap-10 border p-4 rounded-lg shadow-lg w-[20%]">
+            <div>
+              <img
+                src={assets.customer_service}
+                alt=""
+                className="w-8 border rounded-lg p-1"
+              />
+            </div>
+            <div className="flex flex-col flex-wrap gap-1">
+              <p className="flex flex-wrap font-semibold">
+                Chat to appointment
+              </p>
+              <p className="flex flex-wrap text-gray-500">
+                speak to our friendly team
+              </p>
+              <p>
+                <a href="mailto:lch@gmail.com" className="underline">
+                  lch@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap flex-col gap-10 border p-4 rounded-lg shadow-lg w-[20%]">
+            <div>
+              <img
+                src={assets.customer_support}
+                alt=""
+                className="w-8 border rounded-lg p-1"
+              />
+            </div>
+            <div className="flex flex-col flex-wrap gap-1">
+              <p className="flex flex-wrap font-semibold">Chat to support</p>
+              <p className="flex flex-wrap text-gray-500">
+                we are here to help
+              </p>
+              <p>
+                <a href="mailto:lch@gmail.com" className="underline">
+                  supportlch@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap flex-col gap-10 border p-4 rounded-lg shadow-lg w-[20%]">
+            <div>
+              <img
+                src={assets.placeholder}
+                alt=""
+                className="w-8 border rounded-lg p-1"
+              />
+            </div>
+            <div className="flex flex-col flex-wrap gap-1">
+              <p className="flex flex-wrap font-semibold">Visit us</p>
+              <p className="flex flex-wrap text-gray-500">
+                visit our office HQ.
+              </p>
+              <p>
+                <a href="mailto:lch@gmail.com" className="underline">
+                  view on google maps
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap flex-col gap-10 border p-4 rounded-lg shadow-lg w-[20%]">
+            <div>
+              <img
+                src={assets.technical_support}
+                alt=""
+                className="w-8 border rounded-lg p-1"
+              />
+            </div>
+            <div className="flex flex-col flex-wrap gap-1">
+              <p className="flex flex-wrap font-semibold">Call us</p>
+              <p className="flex flex-wrap text-gray-500">
+                Mon-Fri from 8am to 5am
+              </p>
+              <p>
+                <a href="mailto:lch@gmail.com" className="underline">
+                  +9182736478
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-wrap flex-col justify-center items-center gap-8">
+          <p className="text-3xl text-primary">Frequently asked questions</p>
+          <div className="flex flex-wrap w-[100%]  justify-center h-auto gap-4 py-4">
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col gap-4 w-[80%] bg-white border-t border-primary rounded-lg p-4 shadow-md"
+              >
+                {/* Category Header */}
+                <div
+                  className="flex flex-row flex-wrap justify-between cursor-pointer items-center"
+                  onClick={() => toggleDescription(index)}
+                >
+                  <div className="flex flex-row gap-4 items-center cursor-pointer">
+                    <img
+                      src={item.icon}
+                      alt={item.text}
+                      className="w-[30px] h-[30px]"
+                    />
+                    <p className="text-black font-[500]">{item.text}</p>
+                  </div>
+                </div>
+                {/* Category Description */}
+                {openIndex === index && (
+                  <div className="text-black text-justify px-2 font-[500] text-[16px]">
+                    <p>{item.description}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Contact;
+
+ 
+../assests/assest.js
+ 
+import React from "react";
+import { assets } from "../assests/assest";
+
+function Contact() {
+  return (
+    <div>
+      <div className="text-center text-2xl pt-10 text-gray-500 ">
+        <p>
+          CONTACT <span className="text-gray-700 font-semibold">US</span>
+        </p>
+      </div>
+
+      <div className="my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 text-sm">
+        <img
+          src={assets.contact_image}
+          alt="contactImage"
+          className="w-full md:max-w-[360px]"
+        />
+        <div className="flex flex-col justify-center items-start gap-6 ">
+          <p className="font-semibold text-lg text-gray-600">Our OFFICE</p>
+          <p className="text-gray-500">
+            54709 Willms Station <br /> Suite 350, Washington, USA
+          </p>
+          <p className="text-gray-500">
+            Tel: (415) 555‑0132 ,<br />
+            Email: greatstackdev@gmail.com
+          </p>
+          <p className="font-semibold text-lg text-gray-600">
+            Careers at PRESCRIPTO
+          </p>
+          <p className="text-gray-500">
+            Learn more about our teams and job openings.
+          </p>
+          <button className="border  border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500">
+            Explore Jobs
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Contact;
+
+ 
+
+  const [activeTechIndex, setActiveTechIndex] = useState(null);
+ 
+
+                  <img src="" alt="down-arrow" className="w-[20px] h-[20px]" />
+ 
+const toggleTechDescription = (techIndex) => {
+    setActiveTechIndex(activeTechIndex === techIndex ? null : techIndex);
+  };
+ 
+Yes, the consultation fees for each doctor are displayed on their profile page. You can find the cost of the consultation before booking your appointment.
+ 
+Are consultation fees provided on the website?
+ 
+Yes, you can cancel your appointment directly from your user account. Please note that cancellation policies might apply based on the doctor's settings.
+ 
+Is it possible to cancel an appointment on the website?
+ 
+You can check a doctor’s availability by visiting their profile page. It will show the available time slots for the upcoming days, and you can book an appointment according to your preferred time.
+ 
+How can I check the availability of a doctor
+ 
+Simply visit the doctor’s profile, select a date and time that suits you, and confirm your appointment. You can also add any additional details or queries before finalizing your booking.
+ 
+What is the process for booking an appointment with a doctor?
+ 
+Our platform connects you with verified and certified doctors from your city. You can easily browse through doctor categories, check their profiles, read reviews, and book an appointment online at your convenience.
+ 
+How does your platform work?
+ 
+
+  {
+    // icon: frontendIcon,
+    text: "frontend",
+    description: `Intellectsoft provides custom mobile development application services. Increase your sales and clients’ loyalty with a stable, interactive, and high-performance mobile app. Mobile App Development Services, iOS App Development Services, Android App Development Services, Hybrid App Development Services.`,
+    technologies: [
+      { name: "Angular Js" },
+      { name: "Android" },
+      { name: "ReactJs" },
+      { name: "Typescript" },
+      { name: "Bootstrap" },
+      { name: "Vue" },
+      { name: "HTML" },
+      { name: "Kotlin" },
+    ],
+  },
+  {
+    // icon: database,
+    text: "Databse",
+    description: `Intellectsoft provides custom mobile development application services. Increase your sales and clients’ loyalty with a stable, interactive, and high-performance mobile app. Mobile App Development Services, iOS App Development Services, Android App Development Services, Hybrid App Development Services.`,
+    technologies: [
+      { name: "Mongo db" },
+      { name: "MySQL" },
+      { name: "React Native" },
+      { name: "Firebase" },
+      { name: "AWS Daynamobd" },
+      { name: "Realm" },
+      { name: "Oracle" },
+      { name: "Postgresql" },
+      { name: "Redis" },
+    ],
+  },
+  {
+    // icon: cms,
+    text: "cms",
+    description: `Intellectsoft provides custom mobile development application services. Increase your sales and clients’ loyalty with a stable, interactive, and high-performance mobile app. Mobile App Development Services, iOS App Development Services, Android App Development Services, Hybrid App Development Services.`,
+    technologies: [
+      { name: "Drupal" },
+      { name: "MySQL" },
+      { name: "Joomla" },
+      { name: "Wordpress" },
+      {
+        name: "Magento",
+        description:
+          "A framework for building cross-platform mobile apps using web technologies.",
+      },
+      { name: "Shopify" },
+      { name: "Mandix" },
+    ],
+  },
+  {
+    // icon: backendIcon,
+    text: "backend",
+    description: `Intellectsoft provides custom mobile development application services. Increase your sales and clients’ loyalty with a stable, interactive, and high-performance mobile app. Mobile App Development Services, iOS App Development Services, Android App Development Services, Hybrid App Development Services.`,
+    technologies: [
+      { name: "PHP" },
+      { name: "MySQL" },
+      { name: "Java" },
+      { name: "asp.Net" },
+      { name: "Node Js" },
+      { name: "Rails" },
+      { name: "Python" },
+    ],
+  },
+  {
+    // icon: devOps,
+    text: "Infra & DevOps",
+    description: `Intellectsoft provides custom mobile development application services. Increase your sales and clients’ loyalty with a stable, interactive, and high-performance mobile app. Mobile App Development Services, iOS App Development Services, Android App Development Services, Hybrid App Development Services.`,
+    technologies: [
+      { name: "AWS Cloud" },
+      { name: "Google Cloud" },
+      { name: "Gradle" },
+      { name: "Jenkins" },
+      { name: "Appium" },
+      { name: "Selenium" },
+    ],
+  },
+ 
+We build functional and engaging web products for businesses in diverse industries. Our broad scope of technologies allows us to select the best-fit approach for your specific project. Our engineers create progressive web apps, AR-powered e-commerce stores, and more.
+ 
+technologies: [
+      { name: "IOS" },
+      { name: "Android" },
+      { name: "Flutter" },
+      { name: "Ionic" },
+      { name: "React Native" },
+      { name: "Xamarin" },
+    ],
+ 
+import appointmentIcon from "../assests/"
+ 
+// import backendIcon from "../../assests/MySQL_icon.png";
+// import database from "../../assests/database-storage.png";
+// import mobileIcon from "../../assests/IOS-icon.png";
+// import cms from "../../assests/content-management-system.png";
+// import devOps from "../../assests/devops.png";
+// import frontendIcon from "../../assests/react_js_icon.png";
+ 
+ <div className="mt-4">
+                  <h4 className="text-lg font-semibold">Technologies:</h4>
+                  <div className="grid md:grid-cols-2 gap-4 mt-2">
+                    {item.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="bg-blue-900 p-4 border rounded-lg cursor-pointer border-white"
+                        onClick={() => toggleTechDescription(techIndex)}
+                      >
+                        <p className="text-white font-semibold">{tech.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+ 
+
+            {/* Category Description */}
+            {openIndex === index && (
+              <div className="text-black text-justify px-2 font-[500] text-[16px]">
+                <p>{item.description}</p>
+                <div className="mt-4">
+                  <h4 className="text-lg font-semibold">Technologies:</h4>
+                  <div className="grid md:grid-cols-2 gap-4 mt-2">
+                    {item.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="bg-blue-900 p-4 border rounded-lg cursor-pointer border-white"
+                        onClick={() => toggleTechDescription(techIndex)}
+                      >
+                        <p className="text-white font-semibold">{tech.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+ 
+view on google maps
+ 
+<div className="flex flex-wrap flex-row gap-4">
+          <div className="flex flex-wrap flex-col gap-10 border p-4 rounded-lg shadow-lg">
+            <div>
+              <img
+                src={assets.customer_service}
+                alt=""
+                className="w-8 border rounded-lg p-1"
+              />
+            </div>
+            <div className="flex flex-col flex-wrap gap-1">
+              <p className="flex flex-wrap font-semibold">
+                Chat to appointment
+              </p>
+              <p className="flex flex-wrap text-gray-500">
+                speak to our friendly team
+              </p>
+              <p>
+                <a href="mailto:lch@gmail.com" className="underline">
+                  lch@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap flex-col gap-10 border p-4 rounded-lg shadow-lg ">
+            <div>
+              <img
+                src={assets.customer_support}
+                alt=""
+                className="w-8 border rounded-lg p-1"
+              />
+            </div>
+            <div className="flex flex-col flex-wrap gap-1">
+              <p className="flex flex-wrap font-semibold">
+                Chat to support
+              </p>
+              <p className="flex flex-wrap text-gray-500">
+                we are here to help
+              </p>
+              <p>
+                <a href="mailto:lch@gmail.com" className="underline">
+                  supportlch@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+ 
+{/* <div>Chat to help</div> 
+          <div>Visit us</div> 
+          <div>Call us</div>{" "} */}
+ 
+someone@example.com
+ 
+<a href="" type="email">lch@gmail.com</a>
+ 
+assests.lch_logo
+ 
+
+import { assests } from "../assests/assest";
+ 
+
+      hello contact
+ 
+
+// import About from "../src/Test/About"
+ 
+../context/AppContext
+ 
+../assests/assest
+ 
+
+    {/* Set fixed height */}
+ 
+    {doctors.map((item, index) => (
+              <div
+                onClick={() => navigate(`/appointment/${item._id}`)}
+                key={index}
+                className="border border-blue-200 rounded-3xl overflow-hidden cursor-pointer transform hover:translate-y-[-10px] transition-all duration-500 shadow-lg hover:shadow-2xl flex flex-col items-center"
+              >
+                <img src={item.image} alt="" className="bg-[#D8BFD8]" />
+                <div className="py-2 flex flex-col justify-center items-start gap-1">
+                  {/* <div className="flex items-center gap-2 text-sm text-center text-green-500">
+                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                <p>Available</p>
+              </div> */}
+                  <p className="text-gray-900 text-lg font-medium">
+                    {item.name}
+                  </p>
+                  <p className="text-gray-600 text-sm text-center">
+                    {item.speciality}
+                  </p>
+                  <div className="flex flex-row justify-center items-center gap-3 mt-3">
+                    <img src={assets.insta_icon} alt="" className="w-6" />
+                    <img src={assets.fb_icon} alt="" className="w-6" />
+                    <img src={assets.twitter} alt="" className="w-6" />
+                  </div>
+                </div>
+              </div>
+            ))}
+ 
+            {doctors.map((item, index) => (
+              <div
+                onClick={() => navigate(`/appointment/${item._id}`)}
+                key={index}
+                className="border border-blue-200 rounded-3xl overflow-hidden cursor-pointer transform hover:translate-y-[-10px] transition-all duration-500 shadow-lg hover:shadow-2xl flex flex-col items-center"
+              >
+                <img src={item.image} alt="" className="bg-[#D8BFD8]" />
+                <div className="py-2 flex flex-col justify-center items-start gap-1">
+                  {/* <div className="flex items-center gap-2 text-sm text-center text-green-500">
+                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                <p>Available</p>
+              </div> */}
+                  <p className="text-gray-900 text-lg font-medium">
+                    {item.name}
+                  </p>
+                  <p className="text-gray-600 text-sm text-center">
+                    {item.speciality}
+                  </p>
+                  <div className="flex flex-row justify-center items-center gap-3 mt-3">
+                    <img src={assets.insta_icon} alt="" className="w-6" />
+                    <img src={assets.fb_icon} alt="" className="w-6" />
+                    <img src={assets.twitter} alt="" className="w-6" />
+                  </div>
+                </div>
+              </div>
+            ))}
+ 
+            {doctors.map((item, index) => (
+              <div
+                onClick={() => navigate(`/appointment/${item._id}`)}
+                key={index}
+                className="border border-blue-200 rounded-3xl overflow-hidden cursor-pointer transform hover:translate-y-[-10px] transition-all duration-500 shadow-lg hover:shadow-2xl flex flex-col items-center"
+              >
+                <img src={item.image} alt="" className="bg-[#D8BFD8]" />
+                <div className="py-2 flex flex-col justify-center items-start gap-1">
+                  {/* <div className="flex items-center gap-2 text-sm text-center text-green-500">
+                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                <p>Available</p>
+              </div> */}
+                  <p className="text-gray-900 text-lg font-medium">
+                    {item.name}
+                  </p>
+                  <p className="text-gray-600 text-sm text-center">
+                    {item.speciality}
+                  </p>
+                  <div className="flex flex-row justify-center items-center gap-3 mt-3">
+                    <img src={assets.insta_icon} alt="" className="w-6" />
+                    <img src={assets.fb_icon} alt="" className="w-6" />
+                    <img src={assets.twitter} alt="" className="w-6" />
+                  </div>
+                </div>
+              </div>
+            ))}
+ 
+
+                    <img src={assets.mail_icon} alt="" className="w-6" />
+ 
+   <button className="bg-[#800080] px-6 py-[2px] mt-2 rounded-2xl text-white ">
+                    Details
+                  </button>
+ 
+
+          <div>hello world</div>
+ 
+        <p>Meet Our Team</p>
+        <p>We Are All Doctors Here to Help You Book Appointments Online!</p>
+        <p></p>
+ 
+hello world
+ 
+MEET OUR TEAM
+ 
+ <div className="text-white bg-primary px-4 py-2 text-[18px] rounded-xl font-medium">
+          MEET OUR TEAM
+        </div>
+ 
+    {item.cancelled ? (
+                  <p className="text-red-400 text-xs font-medium">cancelled</p>
+                ) : (
+                  <img
+                    onClick={() => cancelAppointments(item._id)}
+                    src={assets.cancel_icon}
+                  />
+                )}
+ 
+className="pt-4 border border-t-0"
+ 
+
+                <img src={assets.list_icon} alt="" />
+ 
+   {dashData.latestAppointments.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center px-6 py-6 gap-3 hover:bg-gray-100"
+              >
+                <img
+                  src={item.docData.image}
+                  alt=""
+                  className="rounded-full w-10"
+                />
+                <div className="flex-1 text-sm">
+                  <p className="text-gray-800 ">{item.docData.name}</p>
+                  <p>{slotDateFormat(item.slotDate)}</p>
+                </div>
+                {item.cancelled ? (
+                  <p className="text-red-400 text-xs font-medium">cancelled</p>
+                ) : (
+                  <img
+                    onClick={() => cancelAppointments(item._id)}
+                    src={assets.cancel_icon}
+                  />
+                )}
+              </div>
+            ))}
+ 
+   <div className="pt-4 border border-t-0">
+                    {dashData.latestAppointments.map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center px-6 py-6 gap-3 hover:bg-gray-100"
+                      >
+                        <img
+                          src={item.docData.image}
+                          alt=""
+                          className="rounded-full w-10"
+                        />
+                        <div className="flex-1 text-sm">
+                          <p className="text-gray-800 ">{item.docData.name}</p>
+                          <p>{slotDateFormat(item.slotDate)}</p>
+                        </div>
+                        {item.cancelled ? (
+                          <p className="text-red-400 text-xs font-medium">cancelled</p>
+                        ) : (
+                          <img
+                            onClick={() => cancelAppointments(item._id)}
+                            src={assets.cancel_icon}
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+ 
+return
+ 
+(dashData
+ 
+cancelAppointment
+ 
+
+    cancelAppointment,
+ 
+omplete-appointment
+ 
+hover:bg-gray-500"
+ 
+JSON.stringify(dob),
+ 
+
+    <p>{age}</p>;
+ 
+ const calculateAge = (dob) => {
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    return age;
+  };
+ 
+
+  console.log("User DOB:", .userData.dob);
+ 
+//   // Agar dob invalid ho (e.g., "NOT SELECTED"), toh directly return karenge.
+  //   if (dob === "NOT SELECTED" || !dob) {
+  //     return "Age not available";
+  //   }
+  
+  //   console.log("DOB:", dob); // Debug: dob ko check karen
+    
+  //   // DOB ko Date object mein convert karte hain
+  //   const today = new Date();
+  //   const birthDate = new Date(dob);
+    
+  //   // Agar birthDate invalid hai (e.g., invalid string), toh return "Invalid date"
+  //   if (isNaN(birthDate.getTime())) {
+  //     return "Invalid date";
+  //   }
+  
+  //   let age = today.getFullYear() - birthDate.getFullYear();
+  //   const month = today.getMonth();
+  //   if (month < birthDate.getMonth() || (month === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+  //     age--;  // Agar birthday is not yet reached this year
+  //   }
+  
+  //   return age;
+  // };
+ 
+// const calculateAge = (dob) => {
+ 
+
+              <p>console.log("User DOB:", item.userData.dob);</p>
+ 
+
+  console.log("User DOB:", item.userData.dob);
+ 
+const calculateAge = (dob) => {
+    // Agar dob invalid ho (e.g., "NOT SELECTED"), toh directly return karenge.
+    if (dob === "NOT SELECTED" || !dob) {
+      return "Age not available";
+    }
+  
+    console.log("DOB:", dob); // Debug: dob ko check karen
+    
+    // DOB ko Date object mein convert karte hain
+    const today = new Date();
+    const birthDate = new Date(dob);
+    
+    // Agar birthDate invalid hai (e.g., invalid string), toh return "Invalid date"
+    if (isNaN(birthDate.getTime())) {
+      return "Invalid date";
+    }
+  
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth();
+    if (month < birthDate.getMonth() || (month === birthDate.getMonth() && today.getDate() < birthDate.getDate())) {
+      age--;  // Agar birthday is not yet reached this year
+    }
+  
+    return age;
+  };
+ 
+-cols-[0.5fr_2fr_1fr_3fr_1fr_1fr]
+ 
+
+      doctor appointments
+ 
+
+        <p className="text-white bg-primary">ABOUT US</p>
+ 
+text-2xl pt-10 text-gray-500
+ 
+
+          <div className="bg-primary">
+          </div>
+ 
+
+            ABOUT <span className="text-gray-700 font-medium">US</span>
+ 
+bg-gradient-to-r from-primary via-purple-800 to-primary
+ 
+bg-gray-400
+ 
+
+            </div>
+ 
+
+            <div className="rounded-md bg-gray-300"
+ 
+Top Doctors to Book
+ 
+shadow
+ 
+bg-gray-500
+ 
+<hr className=""/>
+ 
+<hr className=""/>
+ 
+<hr className="bg-black"/>
+ 
+font-bold
+ 
+<img src={} alt=""/>
+ 
+ <p
+                  onClick={() => navigate("my-appointments")}
+                  className="hover:text-black cursor-pointer"
+                >
+                  My Appointments
+                </p>
+ 
+
+        // {},
+ 
+Our doctors
+ 
+translate-y-[-2px]
+ 
+
+  const [activeNav,setActiveNav]=useState('')
+ 
+
+  const [activeNav,setActiveNav]=useState();
+ 
+ <li
+              className={`py-1 ${
+                activeNav ? "bg-white rounded-full px-4" : ""
+              }`}
+              onClick={() => setActiveNav(!activeNav)}
+            >
+              All Doctors
+              <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+            </li>
+ 
+ <li
+              className={`py-1 ${activeNav ? "bg-white rounded-full px-4" : ""}`}
+              onClick={() => setActiveNav(!activeNav)}
+            >
+              Home
+              <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden"/>
+            </li>
+ 
+<li className="py-1">All doctors</li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+ 
+<li className="py-1">All doctors</li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+ 
+rounded-lg
+ 
+{ headers: { aToken } }
+ 
+const [docImg, setDocImg] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [experience, setExperience] = useState("1 Year");
+  const [fees, setFees] = useState("");
+  const [about, setAbout] = useState("");
+  const [speciality, setSpeciality] = useState("General Physician");
+  const [degree, setDegree] = useState("");
+  const [address_1, setAddress_1] = useState("");
+  const [address_2, setAddress_2] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+
+  const { backendUrl, aToken } = useContext(AdminContext);
+
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    try {
+      if (!docImg) {
+        return toast.error("Image Not Selected");
+      }
+      const formData = new FormData();
+      formData.append("image", docImg);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("experience", experience);
+      formData.append("fees", Number(fees));
+      formData.append("about", about);
+      formData.append("speciality", speciality);
+      formData.append("degree", degree);
+      formData.append("phone", phone);
+      formData.append("date", date);
+      formData.append(
+        "address",
+        JSON.stringify({ line1: address_1, line2: address_2 })
+      );
+
+      // console log form data
+      formData.forEach((value, key) => {
+        console.log(`${key}:${value}`);
+      });
+      const { data } = await axios.post(
+        backendUrl + "/api/admin/add-doctor",
+        formData,
+        { headers: { aToken } }
+      );
+      if (data.success) {
+        toast.success("Doctor Added Successfully");
+        setName("");
+        setEmail("");
+        setPassword("");
+        setDocImg(false);
+        setFees("");
+        setAbout("");
+        setDegree("");
+        setAddress_1("");
+        setAddress_2("");
+        setPhone("");
+        setDate("");
+      } else {
+        toast.error("Please use Different email");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("new doctor data is no post");
+    }
+  };
+ 
+
+const aToken = localStorage.getItem('adminToken');
+ 
+        { headers: { aToken } }
+ 
+        { headers: { aToken } }
+ 
+ backendUrl + "/api/admin/add-doctor",
+        formData,
+        { headers: { aToken } }
+ 
+backendUrl
+ 
+backendUrl
+ 
+add-doctor
+ 
+doctorId
+ 
+doctorId
+ 
+doctorId
+ 
+doctorId
+ 
+docId
+ 
+error.message
+ 
+import jwt from "jsonwebtoken";
+
+// Doctor authentication middleware
+const authDoctor = async (req, res, next) => {
+  try {
+    const { dtoken } = req.headers;
+    if (!dtoken) {
+      return res.status(401).json({ success: false, msg: "Unauthorized" });
+    }
+    const token_decoded = jwt.verify(dtoken, process.env.JWT_SECRET);
+
+    req.body.docId = token_decoded.id;
+
+    next();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+export default authDoctor;
+
+ 
+const appointmentsDoctor = async (req, res) => {
+  try {
+    console.log("Full Request Body:", req.body); 
+    const { docId } = req.body;
+    console.log("docId received:", docId);
+    // const appointments = await appointmentModel.find({ doctorId: docId });
+      const appointments = await appointmentModel.find({docId});
+      console.log(appointments);
+
+    res.json({ success: true, appointments });
+    console.log("appointment is successfully fetch", appointments);
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    console.log("appointment is not successfully fetch");
+  }
+};
+ 
+const appointmentsDoctor = async (req, res) => {
+  try {
+    console.log("Full Request Body:", req.body); 
+    const { doctorId } = req.body;
+    console.log("docId received:", doctorId);
+    // const appointments = await appointmentModel.find({ doctorId: docId });
+      const appointments = await appointmentModel.find({doctorId});
+      console.log(appointments);
+
+    res.json({ success: true, appointments });
+    console.log("appointment is successfully fetch", appointments);
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    console.log("appointment is not successfully fetch");
+  }
+};
+ 
+const appointmentsDoctor = async (req, res) => {
+  try {
+    const { doctorId } = req.body;
+    console.log("docId received:", doctorId);
+    // const appointments = await appointmentModel.find({ doctorId: docId });
+      const appointments = await appointmentModel.find({doctorId});
+      console.log(appointments);
+
+    res.json({ success: true, appointments });
+    console.log("appointment is successfully fetch", appointments);
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    console.log("appointment is not successfully fetch");
+  }
+};
+ 
+const appointmentsDoctor = async (req, res) => {
+  try {
+    const { doctorId } = req.body;
+    console.log("docId received:", doctorId);
+    // const appointments = await appointmentModel.find({ doctorId: docId });
+      const appointments = await appointmentModel.find({doctorId});
+      console.log(appointments);
+
+    res.json({ success: true, appointments });
+    console.log("appointment is successfully fetch", appointments);
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+    console.log("appointment is not successfully fetch");
+  }
+};
+ 
+doctorId: "6787ecb0948255f6199caa6e" 
+ 
+ const appointments = await appointmentModel.find({
+      docId:"679a09862306e0566a4ae603", // Use `doctorId` instead of `docId`
+    });
+    console.log(appointments);
+ 
+docId
+ 
+const appointments = await appointmentModel.find({
+      docId,
+    });
+ 
+ appointments
+ 
+      doctorId: "6787ecb0948255f6199caa6e",
+ 
+
+    const appointments = await appointmentModel.find({docId });
+ 
+const appointmentsDoctor = async (req, res) => {
+  try {
+    const { docId } = req.body;
+    const appointments = await appointmentModel.find({docId });
+
+    res.json({ success: true, appointments });
+    console.log("appointment is successfully fetch",appointments)
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+ 
+ doctorId:
+ 
+
+import appointmentModel from "../models/appointmentModel.js";
+ 
+appointments
+ 
+const getAppointments = async () => {
+    try {
+      const { data } = axios.get(backendUrl + "/api/doctor/appointments", {
+        headers: { dToken },
+      });
+      if(data.success){
+        setAppointments(data.appointments.reverse());
+        console.log(data.appointments.reverse());
+      }else{
+        console.log(data.message);
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
+ 
+
+    इ;
+ 
+.populate("patientId");
+ 
+ <NavLink
+            className={({ isActive }) =>
+              `flex items-center gap-3 py-3 px-3 md:px-9 md:min-w-72 cursor-pointer ${
+                isActive ? "bg-[#F2F3FF] border-r-4 border-primary" : ""
+              }`
+            }
+            to={"/add-doctor"}
+          >
+            <img src={assets.add_icon} alt="" />
+            <p>Add Doctor</p>
+          </NavLink>
+ 
+
+        toast.error("Invalid state or error"); // Fallback error message
+ 
+Successful 
+ 
+    <div className="flex flex-wrap flex-col justify-center items-center lg:flex-row w-full h-auto bg-[#fef8e9] overflow-hidden relative rounded-lg shadow-2xl">
+      {/* left div */}
+      <div className="flex flex-wrap flex-col lg:w-1/2 lg:justify-start lg:items-start lg:gap-6 gap-6 lg:pl-12 justify-center items-center w-full lg:p-0 p-6 ">
+        <h1 className="lg:text-[36px] lg:font-semibold md:text-[36px] sm:text-[32px] md:font-semibold text-[20px]  font-semibold text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-800 to-yellow-500 tracking-normal md:leading-[50px]">
+          Limra Child Clinic
+          <br />
+          Virtual health consulting <br /> with a pediatrician doctor
+        </h1>
+        <p className="text-sm sm:text-base md:text-[20px]  leading-relaxed md:leading-6 font-medium md:font-medium tracking-wide text-gray-700 lg:text-left md:text-center lg:w-full">
+          Limra Child Clinic provides specialized care for children, treating
+          all childhood illnesses and offering admission services for
+          comprehensive care.
+        </p>
+        <div className="flex w-full md:w-auto md:items-center md:gap-4 md:mt-6">
+          <a
+            href="#speciality"
+            className="flex items-center gap-2 bg-primary px-6 sm:px-8 py-3 rounded-full text-white text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
+            Book appointment{" "}
+          </a>
+        </div>
+      </div>
+      {/* right div */}
+      <div className="flex flex-wrap w-1/2">
+        {/* Angled Background */}
+        <div
+          className="lg:absolute top-0 right-0 w-[120%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(50% 100%, 100% -5%, 100% 100%, 50% 100%)",
+          }}
+        ></div>
+
+        <div
+          className="lg:hidden absolute  right-0 w-full h-full bg-primary"
+          style={{
+            clipPath: "polygon(0% 0%, 100% -15%, 100% 100%, 0% 100%)",
+          }}
+        ></div>
+
+        {/* Doctor Image */}
+        <img
+          src={assets.doc19}
+          alt="Doctor"
+          className="relative z-10 bottom-0 w-full"
+        />
+      </div>
+    </div>
+ 
+ <div className="flex flex-wrap flex-col justify-center items-center lg:flex-row w-full h-auto bg-[#fef8e9] overflow-hidden relative rounded-lg shadow-2xl">
+      {/* left div */}
+      <div className="flex flex-wrap flex-col lg:w-1/2 lg:justify-start lg:items-start lg:gap-6 gap-6 lg:pl-12 justify-center items-center w-full lg:p-0 p-6 ">
+        <h1 className="lg:text-[36px] lg:font-semibold md:text-[36px] sm:text-[32px] md:font-semibold text-[20px]  font-semibold text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-800 to-yellow-500 tracking-normal md:leading-[50px]">
+          Limra Child Clinic
+          <br />
+          Virtual health consulting <br /> with a pediatrician doctor
+        </h1>
+        <p className="text-sm sm:text-base md:text-[20px]  leading-relaxed md:leading-6 font-medium md:font-medium tracking-wide text-gray-700 lg:text-left md:text-center lg:w-full">
+          Limra Child Clinic provides specialized care for children, treating
+          all childhood illnesses and offering admission services for
+          comprehensive care.
+        </p>
+        <div className="flex w-full md:w-auto md:items-center md:gap-4 md:mt-6">
+          <a
+            href="#speciality"
+            className="flex items-center gap-2 bg-primary px-6 sm:px-8 py-3 rounded-full text-white text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300 cursor-pointer"
+          >
+            Book appointment{" "}
+          </a>
+        </div>
+      </div>
+      {/* right div */}
+      <div className="flex flex-wrap w-1/2">
+        {/* Angled Background */}
+        <div
+          className="lg:absolute top-0 right-0 w-[120%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(50% 100%, 100% -5%, 100% 100%, 50% 100%)",
+          }}
+        ></div>
+
+        <div
+          className="lg:hidden absolute  right-0 w-full h-full bg-primary"
+          style={{
+            clipPath: "polygon(0% 0%, 100% -15%, 100% 100%, 0% 100%)",
+          }}
+        ></div>
+
+        {/* Doctor Image */}
+        <img
+          src={assets.doc19}
+          alt="Doctor"
+          className="relative z-10 bottom-0 w-full"
+        />
+      </div>
+    </div>
+ 
+className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+ 
+ <div className="w-full grid grid-cols-auto gap-4 gap-y-6 px-3 sm:px-0">
+        {doctors.slice(0, 10).map((item, index) => (
+          <div
+            onClick={() => navigate(`/appointment/${item._id}`)}
+            key={index}
+            className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+          >
+            <img src={item.image} alt="" className="bg-[#D8BFD8]" />
+            <div className="p-4 ">
+              <div className="flex items-center gap-2 text-sm text-center text-green-500">
+                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                <p>Available</p>
+              </div>
+              <p className="text-gray-900 text-lg font-medium">{item.name}</p>
+              <p className="text-gray-600 text-sm">{item.speciality}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+ 
+ <div className="w-full grid grid-cols-auto gap-4 gap-y-6 px-3 sm:px-0">
+        {doctors.slice(0, 10).map((item, index) => (
+          <div
+            onClick={() => navigate(`/appointment/${item._id}`)}
+            key={index}
+            className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+          >
+            <img src={item.image} alt="" className="bg-[#D8BFD8]" />
+            <div className="p-4 ">
+              <div className="flex items-center gap-2 text-sm text-center text-green-500">
+                <p className="w-2 h-2 bg-green-500 rounded-full"></p>
+                <p>Available</p>
+              </div>
+              <p className="text-gray-900 text-lg font-medium">{item.name}</p>
+              <p className="text-gray-600 text-sm">{item.speciality}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+ 
+flex bg-primary rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-20 md:mx-10
+ 
+border-b border-b-gray-400
+ 
+<hr/>
+ 
+
+    // <div className="sm:mx-[2%]">
+    // <Navbar></Navbar>
+    //   <Home></Home>
+    // </div>
+ 
+ <div className="flex flex-wrap flex-col justify-center items-center lg:flex-row w-full h-auto bg-[#fef8e9] overflow-hidden relative">
+      {/* left div */}
+      <div className="flex flex-wrap flex-col lg:w-1/2 lg:justify-start lg:items-start lg:gap-6 gap-6 lg:pl-12 justify-center items-center w-full lg:p-0 p-6 ">
+        <h1 className="lg:text-[36px] lg:font-semibold md:text-[36px] sm:text-[32px] md:font-semibold text-[20px]  font-semibold text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-800 to-yellow-500 tracking-normal md:leading-[50px]">
+          Limra Child Clinic <br />
+          Virtual health consulting <br /> with a pediatrician doctor
+        </h1>
+        <p className="text-sm sm:text-base md:text-[20px]  leading-relaxed md:leading-6 font-medium md:font-medium tracking-wide text-gray-700 lg:text-left md:text-center lg:w-full">
+          Limra Child Clinic provides specialized care for children, treating
+          all childhood illnesses and offering admission services for
+          comprehensive care.
+        </p>
+        <div className="flex w-full md:w-auto md:items-center md:gap-4 md:mt-6">
+          <a
+            href="#speciality"
+            className="flex items-center gap-2 bg-primary px-6 sm:px-8 py-3 rounded-full text-white text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300"
+          >
+            Book appointment{" "}
+          </a>
+        </div>
+      </div>
+      {/* right div */}
+      <div className="flex flex-wrap w-1/2">
+        {/* Angled Background */}
+        <div
+          className="lg:absolute top-0 right-0 w-[120%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(50% 100%, 100% -5%, 100% 100%, 50% 100%)",
+          }}
+        ></div>
+
+        <div
+          className="lg:hidden absolute  right-0 w-full h-full bg-primary"
+          style={{
+            clipPath: "polygon(0% 0%, 100% -15%, 100% 100%, 0% 100%)",
+          }}
+        ></div>
+
+        {/* Doctor Image */}
+        <img
+          src={assets.doc19}
+          alt="Doctor"
+          className="relative z-10 bottom-0 w-full"
+        />
+
+      </div>
+    </div>
+ 
+
+        <div className="md:hidden relative top-20 right-0 w-[100%] h-full bg-primary"></div>
+ 
+className="relative z-10 bottom-0 lg:w-full"
+ 
+max-h-full
+ 
+md:w-[95%]
+ 
+p-3 sm:p-4 rounded-2xl shadow-lg flex items-center gap-3 sm:gap-4 z-20 border border-white
+ 
+left-4 sm:left-8 md:left-[650px]
+ 
+sm:bottom-8 md:bottom-[120px]
+ 
+bottom-4 
+ 
+<div className="flex flex-wrap w-1/2">
+        {/* Angled Background */}
+        <div
+          className="md:absolute top-0 right-0 w-[120%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(50% 100%, 100% -5%, 100% 100%, 50% 100%)",
+          }}
+        ></div>
+        <div className="md:hidden absolute top-20 right-0 w-[100%] h-full bg-primary"></div>
+
+        {/* Doctor Image */}
+        <img
+          src={assets.doc19}
+          alt="Doctor"
+          className="relative z-10 w-full "
+        />
+         {/* Stats Card */}
+         <div
+          style={{
+            backgroundColor: "rgba(255, 220, 255, 0.5)",
+            backdropFilter: "blur(4px)",
+          }}
+          className="absolute bottom-4 sm:bottom-8 md:bottom-[120px] left-4 sm:left-8 md:left-[650px] p-3 sm:p-4 rounded-2xl shadow-lg flex items-center gap-3 sm:gap-4 z-20 border border-white"
+        >
+          <div className="flex flex-col gap-2 items-center">
+            <img
+              src={assets.group_profiles}
+              alt="Patient 1"
+              className="w-12 sm:w-16 md:w-20 h-auto rounded-full border-2 border-white"
+            />
+            <div className="flex flex-col items-center">
+              <h4 className="text-base sm:text-lg font-bold text-white">
+                10k+
+              </h4>
+              <p className="text-xs sm:text-sm text-white">
+                Satisfied Patients
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+ w-full md:max-w-full mx-auto h-auto object-cover
+ 
+ <div
+          className="md:hidden absolute top-0 right-0 w-[100%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(50% 150%, 150% -150%, 70% 100%, 50% 100%)",
+          }}
+        ></div>
+ 
+
+        {/* blue bg div */}
+ 
+
+    //   main div container
+    // <div className="flex w-full h-screen items-center bg-[#fef8e9] relative overflow-hidden">
+    //   {/* left side div start here */}
+    //   <div className="flex flex-wrap flex-row items-center justify-start w-1/2 bg-red-200 p-8 gap-6 z-10">
+    //     <div className="flex flex-col gap-3 leading-[60px]">
+    //       <h1 className="text-[48px] font-medium leading-snug text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-600 to-yellow-600">
+    //         Limra Child Clinic <br />
+    //         Virtual health consulting with a pediatrician doctor
+    //       </h1>
+
+    //       <p className="text-[14px] leading-6 w-[90%] font-medium tracking-wide">
+    //         Limra Child Clinic provides specialized care for children, treating
+    //         all childhood illnesses and offering admission services for
+    //         comprehensive care.
+    //       </p>
+    //     </div>
+    //     <button className="bg-blue-900 hover:bg-blue-700 text-white text-[14px] px-5 py-3 rounded-full">
+    //       Book an Appointment
+    //     </button>
+    //   </div>
+    //   {/* right side div start here */}
+    //   <div className="md:w-1/2 relative justify-center items-center flex">
+
+    //     <img
+    //       src={assets.header_img}
+    //       alt="header_img"
+    //       className="md:absolute mb-3 rounded-lg h-auto"
+    //     />
+    //   </div>
+    // </div>
+ 
+ <div className="flex max-w-full min-h-screen flex-col md:flex-row items-center bg-[#fef8e9] relative overflow-hidden">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 flex flex-col items-start px-6 md:px-12 py-8 md:py-0 gap-4 md:gap-6 z-10">
+        <h1 className="text-2xl md:text-3xl md:text-[42px] font-normal md:font-semibold leading-tight md:leading-snug text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-800 to-yellow-500 tracking-normal">
+          Limra Child Clinic <br />
+          Virtual health consulting <br /> with a pediatrician doctor
+        </h1>
+        <p className="text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-6 md:w-[95%] font-normal md:font-medium tracking-wide text-gray-700">
+          Limra Child Clinic provides specialized care for children, treating
+          all childhood illnesses and offering admission services for
+          comprehensive care.
+        </p>
+        <div className="flex w-full md:w-auto md:items-center md:gap-4 md:mt-6">
+          <a
+            href="#speciality"
+            className="flex items-center gap-2 bg-primary px-6 sm:px-8 py-3 rounded-full text-white text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300"
+          >
+            Book appointment{" "}
+          </a>
+        </div>
+      </div>
+
+      {/* Right Section */}
+      <div className="w-full md:w-1/2 relative min-h-[300px] md:min-h-[600px] flex justify-center items-center">
+        {/* Angled Background */}
+        <div
+          className="absolute top-0 right-0 w-[150%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(15% 100%, 100% -5%, 100% 100%, 50% 100%)",
+          }}
+        ></div>
+
+        {/* Doctor Image */}
+        <img
+          src={assets.doc19}
+          alt="Doctor"
+          className="relative z-10 w-full max-w-[90%] md:max-w-full mx-auto h-auto object-cover"
+        />
+
+        {/* Stats Card */}
+        <div
+          style={{
+            backgroundColor: "rgba(255, 220, 255, 0.5)",
+            backdropFilter: "blur(4px)",
+          }}
+          className="absolute bottom-4 sm:bottom-8 md:bottom-[120px] left-4 sm:left-8 md:left-[40px] p-3 sm:p-4 rounded-2xl shadow-lg flex items-center gap-3 sm:gap-4 z-20 border border-white"
+        >
+          <div className="flex flex-col gap-2 items-center">
+            <img
+              src={assets.group_profiles}
+              alt="Patient 1"
+              className="w-12 sm:w-16 md:w-20 h-auto rounded-full border-2 border-white"
+            />
+            <div className="flex flex-col items-center">
+              <h4 className="text-base sm:text-lg font-bold text-white">
+                10k+
+              </h4>
+              <p className="text-xs sm:text-sm text-white">
+                Satisfied Patients
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+ <div className="flex max-w-full h-auto items-center bg-[#fef8e9] relative overflow-hidden md:flex-row flex-col">
+      {/* Left Section */}
+      <div className="flex flex-wrap md:flex-row items-center justify-start w-1/2 md:px-12 gap-4 z-10">
+        <h1 className="md:text-[42px] md:font-semibold md:leading-snug text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-800 to-yellow-500 tracking-normal">
+          Limra Child Clinic <br />
+          Virtual health consulting <br /> with a pediatrician doctor
+        </h1>
+        <p className="md:text-[16px] md:leading-6 md:w-[95%] md:font-medium tracking-wide text-gray-700">
+          Limra Child Clinic provides specialized care for children, treating
+          all childhood illnesses and offering admission services for
+          comprehensive care.
+        </p>
+        <div className="flex md:items-center md:gap-4 md:mt-6">
+          <a
+            href="#speciality"
+            className="flex items-center gap-2 bg-primary px-8 py-3 rounded-full text-white text-sm m-auto  hover:scale-105 transition-all duration-300"
+          >
+            Book appointment{" "}
+            {/* <img src={assets.arrow_icon} alt="arrow_icon" className="w-3" /> */}
+          </a>
+        </div>
+      </div>
+
+      {/* Right Section */}
+      <div className="md:w-1/2 relative justify-center items-center flex">
+        {/* Angled Background */}
+        <div
+          className="absolute top-0 right-0 w-[150%] h-full bg-primary"
+          style={{
+            clipPath: "polygon(15% 100%, 100% -5%, 100% 100%, 50% 100%)",
+          }}
+        ></div>
+
+        {/* Doctor Image */}
+        <img
+          src={assets.doc19}
+          alt="Doctor"
+          className="relative z-10 w-[100%] mx-auto"
+        />
+        <div
+          style={{
+            backgroundColor: "rgba(255, 220, 255, 0.5)",
+            backdropFilter: "blur(4px)",
+          }}
+          className="absolute bottom-[120px] left-[0px] p-4 rounded-2xl shadow-lg flex items-center gap-4 z-20 border border-white fixed"
+        >
+          <div className="flex space-x-2 flex-wrap flex-col h-auto gap-2">
+            <img
+              src={assets.group_profiles}
+              alt="Patient 1"
+              className="w-full h-auto rounded-full border-2 border-white"
+            />
+
+            <div className="flex flex-wrap justify-center items-center flex-col">
+              <h4 className="text-lg font-bold text-white">10k+</h4>
+              <p className="text-sm text-white">Satisfied Patients</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+relative z-10 w-[100%] mx-auto"
+ 
+ <div className="md:w-1/2 md:h-full h-auto relative flex flex-wrap">
+ 
+  <div className="flex max-w-full md:h-screen h-auto items-center bg-[#fef8e9] relative overflow-hidden md:flex-row flex-col">
+ 
+<div className="absolute bottom-[120px] left-[0px] bg-white p-4 rounded-2xl shadow-lg flex items-center gap-4 z-20">
+ 
+w-10
+ 
+"https://via.placeholder.com/40"
+ 
+ <img src="https://via.placeholder.com/40" alt="Patient 2" className="w-10 h-10 rounded-full border-2 border-white" />
+        <img src="https://via.placeholder.com/40" alt="Patient 3" className="w-10 h-10 rounded-full border-2 border-white" />
+ 
+<button className="px-6 py-3 bg-primary text-white rounded-full hover:bg-blue-700">
+            Book Appointment
+          </button>
+ 
+-blue-600
+ 
+blue-500
+ 
+ <button className="w-12 h-12 flex items-center justify-center border-2 border-gray-400 rounded-full">
+            ▶
+          </button>
+ 
+bg-red-200
+ 
+<div className="w-1/2 p-10">
+ 
+ <h1 className="text-[48px] font-bold text-gray-800 leading-tight">
+          Virtual health consulting with a{" "}
+          <span className="text-yellow-500">naturopathic doctor</span>
+        </h1>
+        <p className="text-lg text-gray-600 mt-4">
+          A data-driven assessment of your blood test results and a Health Plan
+          to help you live a longer and healthier life.
+        </p>
+ 
+"https://via.placeholder.com/400x600"
+ 
+
+    {/* Card */}
+    <div className="absolute bottom-10 left-10 bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 z-20">
+      <div className="flex -space-x-2">
+        <img src="https://via.placeholder.com/40" alt="Patient 1" className="w-10 h-10 rounded-full border-2 border-white" />
+        <img src="https://via.placeholder.com/40" alt="Patient 2" className="w-10 h-10 rounded-full border-2 border-white" />
+        <img src="https://via.placeholder.com/40" alt="Patient 3" className="w-10 h-10 rounded-full border-2 border-white" />
+      </div>
+      <div>
+        <h4 className="text-lg font-bold text-gray-800">10k+</h4>
+        <p className="text-sm text-gray-600">Satisfied Patients</p>
+      </div>
+    </div>
+ 
+<h1 className="text-[48px] font-bold text-gray-800 leading-tight">
+    Virtual health consulting with a{" "}
+    <span className="text-yellow-500">naturopathic doctor</span>
+  </h1>
+  <p className="text-lg text-gray-600 mt-4">
+    A data-driven assessment of your blood test results and a Health Plan
+    to help you live a longer and healthier life.
+  </p>
+ 
+"https://via.placeholder.com/400x600"
+ 
+
+      {/* Card */}
+      <div className="absolute bottom-10 left-10 bg-white p-4 rounded-lg shadow-lg flex items-center gap-4 z-20">
+        <div className="flex -space-x-2">
+          <img src="https://via.placeholder.com/40" alt="Patient 1" className="w-10 h-10 rounded-full border-2 border-white" />
+          <img src="https://via.placeholder.com/40" alt="Patient 2" className="w-10 h-10 rounded-full border-2 border-white" />
+          <img src="https://via.placeholder.com/40" alt="Patient 3" className="w-10 h-10 rounded-full border-2 border-white" />
+        </div>
+        <div>
+          <h4 className="text-lg font-bold text-gray-800">10k+</h4>
+          <p className="text-sm text-gray-600">Satisfied Patients</p>
+        </div>
+      </div>
+ 
+  <div className="flex w-full h-screen items-center bg-[#fef8e9] relative overflow-hidden">
+      {/* left side div start here */}
+      <div className="flex flex-wrap flex-row items-center justify-start w-1/2 bg-red-200 p-8 gap-6 z-10">
+        <div className="flex flex-col gap-3 leading-[60px]">
+          <h1 className="text-[48px] font-medium leading-snug text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-600 to-yellow-600">
+            Limra Child Clinic <br />
+            Virtual health consulting with a pediatrician doctor
+          </h1>
+
+          <p className="text-[14px] leading-6 w-[90%] font-medium tracking-wide">
+            Limra Child Clinic provides specialized care for children, treating
+            all childhood illnesses and offering admission services for
+            comprehensive care.
+          </p>
+        </div>
+        <button className="bg-blue-900 hover:bg-blue-700 text-white text-[14px] px-5 py-3 rounded-full">
+          Book an Appointment
+        </button>
+      </div>
+      {/* right side div start here */}
+      <div className="md:w-1/2 relative justify-center items-center flex">
+      
+        <img
+          src={assets.header_img}
+          alt="header_img"
+          className="md:absolute mb-3 rounded-lg h-auto"
+        />
+      </div>
+    </div>
+ 
+bg-blue-500
+ 
+bg-blue-500
+ 
+lex flex-wrap flex-row items-center justify-start w-1/2 bg-red-200 p-8 gap-6 z-10
+ 
+flex flex-wrap w-full h-[600px] flex-row  items-center bg-gray-500 px-4 relative
+ 
+ <div className="flex flex-wrap w-full h-[600px] flex-row  items-center bg-gray-500 px-4 relative">
+      {/* left side div start here */}
+      <div className="flex flex-wrap flex-row items-center justify-start w-1/2 bg-red-200 p-8 gap-6 z-10">
+        <div className="flex flex-col gap-3 leading-[60px]">
+          <h1 className="text-[48px] font-medium leading-snug text-transparent bg-clip-text bg-gradient-to-r from-black via-yellow-600 to-yellow-600">
+            Limra Child Clinic <br />
+            Virtual health consulting with a pediatrician doctor
+          </h1>
+
+          <p className="text-[14px] leading-6 w-[90%] font-medium tracking-wide">
+            Limra Child Clinic provides specialized care for children, treating
+            all childhood illnesses and offering admission services for
+            comprehensive care.
+          </p>
+        </div>
+        <button className="bg-blue-900 hover:bg-blue-700 text-white text-[14px] px-5 py-3 rounded-full">
+          Book an Appointment
+        </button>
+      </div>
+      {/* right side div start here */}
+      <div className="md:w-1/2 relative justify-center items-center flex bg-blue-500">
+      
+        <img
+          src={assets.header_img}
+          alt="header_img"
+          className="md:absolute mb-3 rounded-lg h-auto"
+        />
+      </div>
+    </div>
+ 
+<div className="md:w-1/2 relative justify-center items-center flex bg-blue-500">
+        <img
+          src={assets.header_img}
+          alt="header_img"
+          className="md:absolute mb-3 rounded-lg h-auto"
+        />
+      </div>
+ 
+
+        <div className="relative">1</div>
+ 
+bottom-0
+ 
+ <div className=" flex relative flex-row justify-center items-center flex-wrap w-1/2">
+        <img className="w-[70%] md:absolute mb-5" src={assets.doc18} />
+      </div>
+ 
+
+        </div>
+ 
+<div className="flex flex-row justify-center items-center flex-wrap w-1/2">
+ 
+ <div className=" flex flex-row justify-center items-center flex-wrap w-1/2">
+        <img className="w-[70%]" src={assets.doc18} />
+      </div>
+ 
+<div className=" flex flex-row justify-center items-center flex-wrap w-1/2">
+        <img className="w-[70%]" src={assets.doc18}/>
+      </div>
+ 
+
+import doc17 from "../assests/doc17.png";
+ 
+Virtual health consulting with a naturopathic doctor
+ 
+ <h1 className="text-[48px] font-medium ">
+            Limra Child Clinic <br />
+            Virtual health consulting with a pediatrician doctor
+          </h1>
+ 
+ <h1 className="text-[48px] font-medium ">
+            Limra Child Clinic <br />
+            Virtual health consulting with a pediatrician doctor
+          </h1>
+ 
+ <h1 className="text-[48px] font-medium ">
+            Limra Child Clinic <br />
+            Virtual health consulting with a pediatrician doctor
+          </h1>
+ 
+
+        <h1 className="text-[48px] font-medium ">
+          
+        </h1>
+ 
+
+          Limra Child Clinic offers specialized care for children, including
+          treatment for all childhood illnesses. We also provide admission
+          services for comprehensive care.
+ 
+Limra Child Clinic
+ 
+justify-center
+ 
+items-center
+ 
+
+        <p></p>
+ 
+hello
+ 
+
+      {/* left side div end haee */}
+ 
+
+import Home from "../src/Test/Home";
+ 
+
+  const 
+ 
+
+                  <p> {dashData.latestAppointments.name} </p>
+ 
+container"
+ 
+<div></div>;
+ 
+Dashboard
+ 
+cancleAppointment
+ 
+cancleAppointment
+ 
+cancleAppointment
+ 
+cancleAppointment
+ 
+cancel-appointment
+ 
+cancelAppointment
+ 
+ancelAppointment
+ 
+userId,
+ 
+ // verify appointment data
+    if (appointmentData.userId !== userId) {
+      return res.json({
+        success: false,
+        message: "You are not authorized to cancel this appointment",
+      });
+    }
+ 
+appointment.slotDate
+ 
+new Date(slotDate);
+ 
+  {appointments.map((item, index) => {
+            <div key={index}>
+              <p>{index + 1}</p>
+              <div>
+                {/* <img src={item.userData.image} alt="" /> */}
+                <p>{item.userData.date}</p>
+              </div>
+            </div>;
+          })}
+ 
+ {/* <img src={item.userData.image} alt="" /> */}
+                <p>{item.userData.name}</p>
+ 
+userData
+ 
+appointments.map((item, index) => {
+           
+          })
+ 
+
+        {}
+ 
+.select("-patient");
+ 
 getDoctorData
  
 

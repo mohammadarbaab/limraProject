@@ -4,9 +4,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js"
+    "dev": "nodemon lch_backend/server.js",
+    "build":"npm install && npm install --prefix lch_frontend && npm run build --prefix lch_frontend",
+    "start": "nodemon lch_backend/server.js"
   },
   "author": "",
   "license": "ISC",
