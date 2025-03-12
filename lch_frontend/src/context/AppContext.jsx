@@ -9,7 +9,7 @@ const AppContextProvider = (props) => {
 
   const [userData, setUserData] = useState(false);
   const currencySymbol = "$";
-  const backendUrl = process.env.REACT_APP_BACKEND_URL || "default-url"; // Agar BACKEND_URL nahi hai to 'default-url' use karo
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "https://limra-project-backend.onrender.com"; // Agar BACKEND_URL nahi hai to 'default-url' use karo
   console.log("this is backend url", backendUrl);
 
   if (!backendUrl) {
