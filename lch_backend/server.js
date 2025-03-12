@@ -32,7 +32,7 @@ app.use("/api/user", userRouter);
 // add this line for deploy production
 app.use(express.static(path.join(_dirname, "lch_frontend", "build")));
 app.get('*',(_,res)=>{
-  res.sendFile(path.resolve(_dirname,"lch_frontend","dist","index.html"));
+  res.sendFile(path.resolve(_dirname,"lch_frontend","build","index.html"));
 });
 
 app.get("/", (req, res) => {
